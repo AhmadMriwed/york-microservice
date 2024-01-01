@@ -4,7 +4,8 @@ namespace App\Http\Clients;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
-
+use Illuminate\Http\JsonResponse;
+use Nette\Utils\Arrays;
 
 class BaseClients
 {
@@ -12,6 +13,8 @@ class BaseClients
      * @var Client
      */
     private $client;
+    private $server_url;
+    private $header;
 
     /**
      * UserHttpClient constructor.
@@ -19,8 +22,15 @@ class BaseClients
     public function __construct()
     {
         $this->client = new Client(['base_uri' => 'inventory/']);
+        $this->server_url=env('CMS_URL').env('CMS_ACCSESS_ROUTE');
+        $this->header=[ 
+             'Content-Type' => 'application/json',
+             'accept'=>['application/json'],
+             "accept-language"=>app()->getLocale(),
+        ];
     }
 
+  
     /**
      * @param array $products
      * @return Collection
@@ -57,52 +67,44 @@ class BaseClients
 
     //     return new Collection($res);
     // }
-    public function sendApiRequest()
+    public function sendApiRequest($method="GET", $url='',$body = [], $queryParameters = [])
     {
         try {
-            // إعداد البيانات
-            //$url = 'https://example.com/api/endpoint';
-            $url = 'http://127.0.0.1:8000/api/temp';
-            $body = ['key1' => 'value1', 'key2' => 'value2'];
-            $queryParameters = ['param1' => 'value1', 'param2' => 'value2'];
+            // إعداد البيانات        
+            $url =  $this->server_url.$url??'';
 
             // إعداد العميل
-            $client = new Client();
-            error_log('1');
+            //$client = new Client();
             // إرسال الطلب
-            $response = $client->get($url,
+            $response = $this->client->request($method,$url,
             [
                 'verify' => false, // تجاوز التحقق من الشهادة SSL
-                //'query' => $queryParameters,
-                //'json' => $body,
-                // 'headers' => [
-                //     'Content-Type' => 'application/json',
-                //     // يمكنك إضافة المزيد من الرؤوس إذا كان ذلك ضروريًا
-                // ],
+                'query' => $queryParameters,
+                'json' => $body,
+                'headers' =>  $this->header,
             ]);
-error_log('2');
             // الحصول على الاستجابة
             $statusCode = $response->getStatusCode();
             $body = $response->getBody()->getContents();
-            error_log('3');
-            // يمكنك استخدام $statusCode و $body كما تحتاج
+           // يمكنك استخدام $statusCode و $body كما تحتاج
 
             // على سبيل المثال، إرجاع البيانات كمصفوفة
             return json_decode($body, true);
-            error_log('4');
-        } catch (RequestException $e) {
+          
+        } catch (RequestException $e) {  
+                   
             // تعامل مع الأخطاء هنا
             $statusCode = $e->getResponse() ? $e->getResponse()->getStatusCode() : null;
             $errorBody = $e->getResponse() ? $e->getResponse()->getBody()->getContents() : $e->getMessage();
-
+            $jsonErrorBody=json_decode( $errorBody );
             // يمكنك التحقق من $statusCode و $errorBody واتخاذ الإجراء المناسب
-
             // على سبيل المثال، إرجاع الخطأ كمصفوفة
             return [
                 'error' => true,
                 'status_code' => $statusCode,
-                'message' => $errorBody,
+                'message'=>$jsonErrorBody->message?? $errorBody,
             ];
+           // return json_decode( $errorBody );
         }
     }
 }

@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CourseAdsController;
 use App\Http\Controllers\TempControler;
+use App\Http\Controllers\VenueController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,10 +25,29 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 });
 
+//Category
+Route::group(['prefix' => 'course_ads'], function () {//ok
+    Route::get('/', [CourseAdsController::class, 'getAllCourseAds']);
+    Route::get('/search', [CourseAdsController::class, 'searchAdvanceCourseAds']);
+    Route::get('/{id}', [CourseAdsController::class, 'getCourseAdsById']);
+});
 
+Route::group(['prefix' => 'category'], function () {//ok
+    Route::get('/', [CategoryController::class, 'getAllCategory']);
+    Route::get('/{id}', [CategoryController::class, 'getCategoryById']);
+
+});
+
+//venue
+    Route::group(['prefix' => 'venue'], function () {//ok
+    Route::get('/', [VenueController::class, 'getAllVenue']);
+    Route::get('/{id}', [VenueController::class, 'getVenueById']);
+ 
+});
 Route::group(['prefix' => 'temp'], function () {//ok
     Route::get('/', [TempControler::class, 'helloWorld']);
-    Route::get('/micro', [TempControler::class, 'temp']);
+    Route::get('/micro', [TempControler::class, 'micro']);
+    Route::get('/t1', [TempControler::class, 'test1']);
 
 
 });
