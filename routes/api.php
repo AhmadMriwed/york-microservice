@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\ContactUsIconsController;
 use App\Http\Controllers\CourseAdsController;
 use App\Http\Controllers\TempControler;
 use App\Http\Controllers\TrainingPlanController;
@@ -58,9 +60,17 @@ Route::group(['prefix' => 'about_us'], function () {
 Route::get('/',[AboutUsController::class,'index']);
 });
 
-Route::group(['prefix' => 'Training_plan'], function () {
+Route::group(['prefix' => 'training_plan'], function () {
     Route::get('/',[TrainingPlanController::class,'index']);
     Route::get('/latestPlan',[TrainingPlanController::class,'getTrainingPlan']);
+});
+Route::group(['prefix' => 'contact_us'], function () {
+    Route::get('/',[ContactUsController::class,'index']);
+    Route::get('/{contactUs}',[ContactUsController::class,'show']);
+});
+Route::group(['prefix' => 'contact_us_icons'], function () {
+    Route::get('/',[ContactUsIconsController::class,'index']);
+    Route::get('/{contactUsIcons}',[ContactUsIconsController::class,'show']);
 });
 
 
