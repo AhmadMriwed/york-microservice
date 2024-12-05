@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\ContactUsIconsController;
 use App\Http\Controllers\CourseAdsController;
+use App\Http\Controllers\FrequentlyQuestionController;
 use App\Http\Controllers\TempControler;
 use App\Http\Controllers\TrainingPlanController;
 use App\Http\Controllers\VenueController;
@@ -23,10 +24,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
 
     Route::post('temp', [TempControler::class, 'temp']);
-
+    return $request->user();
 });
 
 //Category
@@ -71,6 +72,10 @@ Route::group(['prefix' => 'contact_us'], function () {
 Route::group(['prefix' => 'contact_us_icons'], function () {
     Route::get('/',[ContactUsIconsController::class,'index']);
     Route::get('/{contactUsIcons}',[ContactUsIconsController::class,'show']);
+});
+Route::group(['prefix' => 'frequently_questions'], function () {
+    Route::get('/',[FrequentlyQuestionController::class,'index']);
+    Route::get('/{frequentlyQuestion}',[FrequentlyQuestionController::class,'show']);
 });
 
 

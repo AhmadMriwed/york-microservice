@@ -13,7 +13,7 @@ class AboutUsController extends Controller
      */
     public function index()
     {
-        return about_us::all();
+        return about_us::get();
     }
 
     /**
