@@ -14,4 +14,8 @@ class TrainingPlan extends Model
     {
         return $this->belongsTo(Files::class,'file_id');
     }
+
+    public function plan(){
+        return $this->hasMany(planRegister::class,'training_plan_id');
+    }
 }

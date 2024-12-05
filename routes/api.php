@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\ContactUsIconsController;
 use App\Http\Controllers\CourseAdsController;
 use App\Http\Controllers\FrequentlyQuestionController;
+use App\Http\Controllers\PlanRegisterController;
 use App\Http\Controllers\TempControler;
 use App\Http\Controllers\TrainingPlanController;
 use App\Http\Controllers\VenueController;
@@ -73,9 +74,16 @@ Route::group(['prefix' => 'contact_us_icons'], function () {
     Route::get('/',[ContactUsIconsController::class,'index']);
     Route::get('/{contactUsIcons}',[ContactUsIconsController::class,'show']);
 });
+
 Route::group(['prefix' => 'frequently_questions'], function () {
     Route::get('/',[FrequentlyQuestionController::class,'index']);
     Route::get('/{frequentlyQuestion}',[FrequentlyQuestionController::class,'show']);
+});
+
+Route::group(['prefix' => 'plan_register'], function () {
+    Route::post('/',[PlanRegisterController::class,'store']);
+    Route::get('/',[PlanRegisterController::class,'index']);
+    Route::get('/{planRegister}',[PlanRegisterController::class,'show']);
 });
 
 
