@@ -23,14 +23,14 @@ class BaseClients
     {
         $this->client = new Client(['base_uri' => 'inventory/']);
         $this->server_url=env('CMS_URL').env('CMS_ACCSESS_ROUTE');
-        $this->header=[ 
+        $this->header=[
              'Content-Type' => 'application/json',
              'accept'=>['application/json'],
              "accept-language"=>app()->getLocale(),
         ];
     }
 
-  
+
     /**
      * @param array $products
      * @return Collection
@@ -70,7 +70,7 @@ class BaseClients
     public function sendApiRequest($method="GET", $url='',$body = [], $queryParameters = [])
     {
         try {
-            // إعداد البيانات        
+            // إعداد البيانات
             $url =  $this->server_url.$url??'';
 
             // إعداد العميل
@@ -90,9 +90,9 @@ class BaseClients
 
             // على سبيل المثال، إرجاع البيانات كمصفوفة
             return json_decode($body, true);
-          
-        } catch (RequestException $e) {  
-                   
+
+        } catch (RequestException $e) {
+
             // تعامل مع الأخطاء هنا
             $statusCode = $e->getResponse() ? $e->getResponse()->getStatusCode() : null;
             $errorBody = $e->getResponse() ? $e->getResponse()->getBody()->getContents() : $e->getMessage();

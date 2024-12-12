@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Files;
+use App\Models\File;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,7 +12,7 @@ class TrainingPlan extends Model
 
     public function file()
     {
-        return $this->belongsTo(Files::class,'file_id');
+        return $this->belongsTo(File::class,'file_id');
     }
 
     public function plan(){
