@@ -20,12 +20,7 @@ return new class extends Migration
             $table->enum('gender', Gender::toArray())->nullable();
             $table->text('address')->nullable();
             $table->text('notes')->nullable();
-            $table->string('course_code',6);
-            $table->text('course_title');
-            $table->text('course_venue');
-            $table->text('course_category');
-            $table->date('course_start_date');
-            $table->date('course_end_date');
+            $table->foreignId('course_id');
             $table->timestamps();
         });
     }

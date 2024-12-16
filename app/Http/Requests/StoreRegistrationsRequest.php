@@ -30,8 +30,6 @@ class StoreRegistrationsRequest extends FormRequest
             'address'=>'required|string',
             'notes'=>'required|string',
 
-
-
         ];
     }
 }

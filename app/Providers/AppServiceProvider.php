@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        View::addNamespace('mail', resource_path('views/vendor/mail/html'));
+        View::addNamespace('mail-text', resource_path('views/vendor/mail/text'));
+
     }
 }

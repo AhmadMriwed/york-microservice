@@ -50,7 +50,7 @@ class RegistrationsController extends Controller
         }
 
         return RegistrationResource::make(RegistrationService::register($request->validated(),$courseData))
-            ->additional(['message'=>'Stored Successfully']);
+            ->additional(['message'=>'Created Successfully']);
     }
 
 
