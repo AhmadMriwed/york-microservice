@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class RegistrationMail extends Mailable
+class RegistrationUserMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -22,14 +22,15 @@ class RegistrationMail extends Mailable
         $this->registrationDetails = $registrationDetails;
 
     }
+
     /**
      * Get the message envelope.
      */
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'New Registration',
-           // from: new Address('Training@yorkbritishacademy.uk', 'York British Academy')
+            subject: 'Successfully registered in York British Academy',
+            from: new Address('Training@yorkbritishacademy.uk', 'York British Academy')
         );
     }
 
@@ -39,7 +40,7 @@ class RegistrationMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'emails.registration',
+            markdown: 'emails.registration_user',
             with: [
                 'registrationDetails' => $this->registrationDetails,
             ]

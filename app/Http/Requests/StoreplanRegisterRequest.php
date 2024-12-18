@@ -23,9 +23,9 @@ class StoreplanRegisterRequest extends FormRequest
     {
         return [
             'training_plan_id'=>'nullable',
-            'full_name'=>'required|string',
-            'phone'=>'required|string',
-            'email'=>'required|string',
+            'full_name'=>'required|string|min:1|max:255',
+            'phone'=>'required|min:3|max:25',
+            'email'=>'required|email|min:3|max:320',
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Mail\RegistrationMail;
+use App\Mail\RegistrationUserMail;
 use App\Models\Registration;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -30,15 +31,8 @@ class RegistrationService
         'course_end_date' => $courseData['data']['end_date'],
 
     ];
-    $messageToSend= $registrationDetails['full_name'] . ", You are successfully registered for the course \"" .$registrationDetails['course_title'] . "." . "\"\r\nCourse code: " .$registrationDetails['course_code'] . "\r\nWe will contact you asap.";
-    Mail::raw($messageToSend, function($message) use ($registrationDetails)
-    {
-        $message->subject('Register For a Course');
-        $message->from('099450735z@gmail.com', 'York British Academy');
-        $message->to($registrationDetails['email']);
-    });
 
-
+    Mail::to($registrationDetails['email'])->send(new RegistrationUserMail($registrationDetails));
     Mail::to('099450735z@gmail.com')->send(new RegistrationMail($registrationDetails));
 
     return $registration;
