@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('plan_registers', function (Blueprint $table) {
+        Schema::create('counters', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('training_plan_id')->references('id')->on('training_plans')->cascadeOnDelete();
-            $table->string('full_name');
-            $table->string('phone');
-            $table->string('email');
+            $table->bigInteger('counter');
+            $table->text('title');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('plan_registers');
+        Schema::dropIfExists('counters');
     }
 };

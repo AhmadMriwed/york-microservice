@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\aboutUs;
-use App\Http\Requests\Storeabout_usRequest;
-use App\Http\Requests\Updateabout_usRequest;
+use App\Http\Resources\SliderResource;
+use App\Models\Slider;
+use App\Http\Requests\StoreSliderRequest;
+use App\Http\Requests\UpdateSliderRequest;
 
-class AboutUsController extends Controller
+class SliderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return aboutUs::get();
+        return SliderResource::collection(Slider::get())
+            ->additional(['message' => 'Retrieved successfully']);
+
     }
 
     /**
@@ -27,7 +30,7 @@ class AboutUsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Storeabout_usRequest $request)
+    public function store(StoreSliderRequest $request)
     {
         //
     }
@@ -35,15 +38,16 @@ class AboutUsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(aboutUs $about_us)
+    public function show(Slider $slider)
     {
-        //
+        return SliderResource::make($slider)
+            ->additional(['message' => 'Retrieved successfully']);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(aboutUs $about_us)
+    public function edit(Slider $slider)
     {
         //
     }
@@ -51,7 +55,7 @@ class AboutUsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Updateabout_usRequest $request, aboutUs $about_us)
+    public function update(UpdateSliderRequest $request, Slider $slider)
     {
         //
     }
@@ -59,7 +63,7 @@ class AboutUsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(aboutUs $about_us)
+    public function destroy(Slider $slider)
     {
         //
     }

@@ -2,12 +2,16 @@
 
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\ContactUsIconsController;
+use App\Http\Controllers\CounterController;
 use App\Http\Controllers\CourseAdsController;
 use App\Http\Controllers\FrequentlyQuestionController;
 use App\Http\Controllers\PlanRegisterController;
 use App\Http\Controllers\RegistrationsController;
+use App\Http\Controllers\SectionController;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TempControler;
 use App\Http\Controllers\TrainingPlanController;
 use App\Http\Controllers\VenueController;
@@ -59,7 +63,7 @@ Route::group(['prefix' => 'temp'], function () {//ok
 
 });
 
-Route::group(['prefix' => 'about_us'], function () {
+Route::group(['prefix' => 'aboutUs'], function () {
 Route::get('/',[AboutUsController::class,'index']);
 });
 
@@ -79,6 +83,26 @@ Route::group(['prefix' => 'contact_us_icons'], function () {
 Route::group(['prefix' => 'frequently_questions'], function () {
     Route::get('/',[FrequentlyQuestionController::class,'index']);
     Route::get('/{frequentlyQuestion}',[FrequentlyQuestionController::class,'show']);
+});
+
+Route::group(['prefix' => 'sliders'], function () {
+    Route::get('/',[SliderController::class,'index']);
+    Route::get('/{slider}',[SliderController::class,'show']);
+});
+
+Route::group(['prefix' => 'sections'], function () {
+    Route::get('/',[SectionController::class,'index']);
+    Route::get('/{section}',[SectionController::class,'show']);
+});
+
+Route::group(['prefix' => 'counters'], function () {
+    Route::get('/',[CounterController::class,'index']);
+    Route::get('/{counter}',[CounterController::class,'show']);
+});
+
+Route::group(['prefix' => 'clients'], function () {
+    Route::get('/',[ClientController::class,'index']);
+    Route::get('/{client}',[ClientController::class,'show']);
 });
 
 Route::group(['prefix' => 'plan_register'], function () {

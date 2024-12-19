@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('plan_registers', function (Blueprint $table) {
+        Schema::create('section_types', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('training_plan_id')->references('id')->on('training_plans')->cascadeOnDelete();
-            $table->string('full_name');
-            $table->string('phone');
-            $table->string('email');
+            $table->string('type',255);
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('plan_registers');
+        Schema::dropIfExists('section_types');
     }
 };
