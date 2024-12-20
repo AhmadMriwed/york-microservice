@@ -6,7 +6,6 @@ use App\Http\Clients\CourseAdsClient;
 use App\Http\Resources\RegistrationResource;
 use App\Models\Registration;
 use App\Http\Requests\StoreRegistrationsRequest;
-use App\Http\Requests\UpdateRegistrationsRequest;
 use App\Services\RegistrationService;
 use Illuminate\Http\Response;
 use Illuminate\Support\Arr;
@@ -20,21 +19,7 @@ class RegistrationsController extends Controller
     {
         $this->courseAdsClient = new CourseAdsClient(); // Initialize the client
     }
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -64,27 +49,5 @@ class RegistrationsController extends Controller
             ->additional(['message' => 'Retrieved successfully']);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Registration $registrations)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateRegistrationsRequest $request, Registration $registrations)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Registration $registrations)
-    {
-        //
-    }
 }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Resources\PlanRegisterResource;
 use App\Models\planRegister;
 use App\Http\Requests\StoreplanRegisterRequest;
-use App\Http\Requests\UpdateplanRegisterRequest;
 use App\Services\RegistrationPlanService;
 use Illuminate\Support\Facades\Cookie;
 
@@ -26,13 +25,7 @@ class PlanRegisterController extends Controller
         ->additional(['message' => 'Retrieved successfully']);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -59,27 +52,4 @@ class PlanRegisterController extends Controller
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(planRegister $planRegister)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateplanRegisterRequest $request, planRegister $planRegister)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(planRegister $planRegister)
-    {
-        //
-    }
 }

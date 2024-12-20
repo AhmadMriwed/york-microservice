@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\aboutUs;
-use App\Http\Requests\Storeabout_usRequest;
-use App\Http\Requests\Updateabout_usRequest;
 
 class AboutUsController extends Controller
 {
@@ -14,53 +12,5 @@ class AboutUsController extends Controller
     public function index()
     {
         return aboutUs::get();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Storeabout_usRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(aboutUs $about_us)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(aboutUs $about_us)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Updateabout_usRequest $request, aboutUs $about_us)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(aboutUs $about_us)
-    {
-        //
     }
 }

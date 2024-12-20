@@ -22,10 +22,11 @@ class StoreplanRegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'training_plan_id'=>'nullable',
-            'full_name'=>'required|string|min:1|max:255',
-            'phone'=>'required|min:3|max:25',
-            'email'=>'required|email|min:3|max:320',
+            'training_plan_id' => ['nullable'],
+            'full_name' => ['required', 'string', 'min:1', 'max:255'],
+            'phone' => ['required', 'min:3', 'max:25'],
+            'email' => ['required', 'email', 'min:3', 'max:320'],
         ];
+
     }
 }

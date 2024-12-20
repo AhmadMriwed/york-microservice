@@ -22,14 +22,13 @@ class StoreRegistrationsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'course_id'=>'required',
-            'full_name'=>'required|string',
-            'phone'=>'required|string',
-            'email'=>'required|string',
-            'gender'=>'required|string',
-            'address'=>'required|string',
-            'notes'=>'required|string',
-
+            'course_id' => ['required'],
+            'full_name' => ['required', 'string'],
+            'phone' => ['required', 'string'],
+            'email' => ['required', 'string', 'email'],
+            'gender' => ['required', 'string'],
+            'address' => ['required', 'string'],
+            'notes' => ['required', 'string'],
         ];
     }
 }

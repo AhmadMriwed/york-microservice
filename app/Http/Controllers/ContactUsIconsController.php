@@ -19,23 +19,6 @@ class ContactUsIconsController extends Controller
             ->additional(['message' => 'Icons retrieved successfully.']);
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreContactUsIconsRequest $request)
-    {
-        //
-    }
-
     /**
      * Display the specified resource.
      */
@@ -45,27 +28,4 @@ class ContactUsIconsController extends Controller
             ->additional(['message' => 'Icon retrieved successfully.']);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(ContactUsIcons $contactUsIcons)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateContactUsIconsRequest $request, ContactUsIcons $contactUsIcons)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(ContactUsIcons $contactUsIcons)
-    {
-        //
-    }
 }
