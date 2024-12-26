@@ -107,7 +107,7 @@ Route::group(['prefix' => 'clients'], function () {
 
 Route::group(['prefix' => 'plan_register'], function () {
     Route::post('/',[PlanRegisterController::class,'store']);
-   // Route::get('/',[PlanRegisterController::class,'index']);
+    Route::get('/',[PlanRegisterController::class,'index']);
     Route::get('/{planRegister}',[PlanRegisterController::class,'show']);
 });
 Route::group(['prefix' => 'registration'], function () {

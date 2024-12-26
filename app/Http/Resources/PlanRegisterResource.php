@@ -16,6 +16,7 @@ class PlanRegisterResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id'=>$this->id,
             'training_plan_id'=>$this->training_plan_id,
             'full_name'=>$this->full_name,
             'phone'=>$this->phone,

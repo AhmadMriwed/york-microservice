@@ -5,8 +5,7 @@ return [
     'documentations' => [
         'default' => [
             'api' => [
-                'title' => 'L5 Swagger UI',
-            ],
+                'title' => env('L5_SWAGGER_API_TITLE', 'My API'),            ],
 
             'routes' => [
                 /*
@@ -91,7 +90,8 @@ return [
             /*
              * Edit to set the api's base path
              */
-            'base' => env('L5_SWAGGER_BASE_PATH', null),
+            'base' => env('L5_SWAGGER_BASE_PATH'),
+
 
             /*
              * Absolute path to directories that should be excluded from scanning
@@ -237,7 +237,7 @@ return [
          * Set this to `true` in development mode so that docs would be regenerated on each request
          * Set this to `false` to disable swagger generation on production
          */
-        'generate_always' => env('L5_SWAGGER_GENERATE_ALWAYS', false),
+        'generate_always' => env('L5_SWAGGER_GENERATE_ALWAYS', true),
 
         /*
          * Set this to `true` to generate a copy of documentation in yaml format
@@ -312,7 +312,7 @@ return [
          * Constants which can be used in annotations
          */
         'constants' => [
-            'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', 'http://my-default-host.com'),
+            'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', 'http://127.0.0.1:8000'),
         ],
     ],
 ];

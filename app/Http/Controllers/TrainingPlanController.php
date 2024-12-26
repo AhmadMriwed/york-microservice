@@ -10,11 +10,43 @@ class TrainingPlanController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    /**
+     * @OA\Get(
+     *     path="/training_plan",
+     *     summary="Get all training plans",
+     *     description="Retrieve a list of all training plans",
+     *     operationId="getAllTrainingPlans",
+     *     tags={"Training Plans"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="List of training plans retrieved successfully",
+     *     )
+     * )
+     */
     public function index()
     {
         return TrainingPlanResource::collection( TrainingPlan::all())->additional(['message' => 'Retrieved successfully']);
     }
 
+
+    /**
+     * @OA\Get(
+     *     path="/training_plan/latestPlan",
+     *     summary="Get the latest training plan for the current year",
+     *     description="Retrieve the most recent training plan for the current year, if available",
+     *     operationId="getLatestTrainingPlan",
+     *     tags={"Training Plans"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Latest training plan retrieved successfully",
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Training plan not found",
+     *     )
+     * )
+     */
     public function getTrainingPlan()
     {
         $latestTrainingPlan = TrainingPlan::where('year', date('Y'))->latest()->first();

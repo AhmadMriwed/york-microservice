@@ -4,10 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\aboutUs;
 
+
+
+
 class AboutUsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *     path="/aboutUs",
+     *     summary="Get About Us information",
+     *     @OA\Response(
+     *         response=200,
+     *         description="About Us data retrieved successfully",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(ref="#/components/schemas/AboutUs")
+     *         )
+     *     )
+     * )
      */
     public function index()
     {

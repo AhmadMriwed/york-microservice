@@ -1,0 +1,1387 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "York academy",
+        "description": "York academy",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/api/"
+        },
+        {
+            "url": "/api/"
+        }
+    ],
+    "paths": {
+        "/aboutUs": {
+            "get": {
+                "summary": "Get About Us information",
+                "operationId": "7daf8730990ac31b8a33eade585dcb96",
+                "responses": {
+                    "200": {
+                        "description": "About Us data retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/AboutUs"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/category": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Get all categories",
+                "description": "Retrieve a list of all categories",
+                "operationId": "getAllCategories",
+                "responses": {
+                    "200": {
+                        "description": "List of categories retrieved successfully"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/category/{id}": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Get category by ID",
+                "description": "Retrieve details of a specific category by its ID",
+                "operationId": "getCategoryById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the category",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "1"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Category details retrieved successfully"
+                    },
+                    "404": {
+                        "description": "Category not found"
+                    }
+                }
+            }
+        },
+        "/clients": {
+            "get": {
+                "summary": "Retrieve a list of clients",
+                "operationId": "af1f3794367a5e843bf15e3a9033d911",
+                "responses": {
+                    "200": {
+                        "description": "List of clients retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Client"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Retrieved successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/clients/{id}": {
+            "get": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Retrieve client information",
+                "description": "Get details of a specific client by ID",
+                "operationId": "getClientById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the client to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Client data retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/Client"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Retrieved successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Client not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Client not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/contact_us": {
+            "get": {
+                "tags": [
+                    "Contact Us"
+                ],
+                "summary": "Get all contact us",
+                "description": "Retrieve a list of all contact us ",
+                "operationId": "getContactUs",
+                "responses": {
+                    "200": {
+                        "description": "List of contact us ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ContactUs"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/contact_us/{id}": {
+            "get": {
+                "tags": [
+                    "Contact Us"
+                ],
+                "summary": "Retrieve contact us entry by ID",
+                "description": "Get details of a specific contact us entry by ID",
+                "operationId": "getContactUsById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the contact us entry to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Contact Us entry retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/ContactUs"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Retrieved successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Contact Us entry not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Contact Us entry not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/contact_us_icons": {
+            "get": {
+                "tags": [
+                    "Contact Us"
+                ],
+                "summary": "Get all contact us icons",
+                "description": "Retrieve a list of all contact us icons",
+                "operationId": "getContactUsIcons",
+                "responses": {
+                    "200": {
+                        "description": "List of contact us icons",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ContactUsIcons"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/contact_us_icons/{id}": {
+            "get": {
+                "tags": [
+                    "Contact Us Icons"
+                ],
+                "summary": "Retrieve contact us icon by ID",
+                "description": "Get details of a specific contact us icon by ID",
+                "operationId": "getContactUsIconById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the contact us icon to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Contact Us Icon retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/ContactUsIcons"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Icon retrieved successfully."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Contact Us Icon not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Icon not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/counters": {
+            "get": {
+                "tags": [
+                    "Counters"
+                ],
+                "summary": "Get all counters",
+                "description": "Retrieve a list of all counters",
+                "operationId": "getCounters",
+                "responses": {
+                    "200": {
+                        "description": "List of counters retrieved successfully"
+                    }
+                }
+            }
+        },
+        "/counters/{id}": {
+            "get": {
+                "tags": [
+                    "Counters"
+                ],
+                "summary": "Get counter by ID",
+                "description": "Retrieve a specific counter by its ID",
+                "operationId": "getCounterById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the counter to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Counter retrieved successfully"
+                    },
+                    "404": {
+                        "description": "Counter not found"
+                    }
+                }
+            }
+        },
+        "/course_ads/search": {
+            "get": {
+                "tags": [
+                    "Course Ads"
+                ],
+                "summary": "Search for advanced course ads",
+                "description": "Search course ads with advanced filters",
+                "operationId": "searchAdvanceCourseAds",
+                "parameters": [
+                    {
+                        "name": "languages[]",
+                        "in": "query",
+                        "description": "Filter by languages",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "example": [
+                                "English"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "description": "Filter by course code",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "522828"
+                        }
+                    },
+                    {
+                        "name": "venue_ids[]",
+                        "in": "query",
+                        "description": "Filter by venue IDs",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            },
+                            "example": [
+                                29
+                            ]
+                        }
+                    },
+                    {
+                        "name": "category_ids[]",
+                        "in": "query",
+                        "description": "Filter by category IDs",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            },
+                            "example": [
+                                19
+                            ]
+                        }
+                    },
+                    {
+                        "name": "months[]",
+                        "in": "query",
+                        "description": "Filter by months",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "years[]",
+                        "in": "query",
+                        "description": "Filter by years",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Search results retrieved successfully"
+                    },
+                    "400": {
+                        "description": "Invalid request data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/course_ads": {
+            "get": {
+                "tags": [
+                    "Course Ads"
+                ],
+                "summary": "Get all course ads",
+                "description": "Retrieve a list of all course ads",
+                "operationId": "getAllCourseAds",
+                "responses": {
+                    "200": {
+                        "description": "List of course ads retrieved successfully"
+                    }
+                }
+            }
+        },
+        "/course_ads/{id}": {
+            "get": {
+                "tags": [
+                    "Course Ads"
+                ],
+                "summary": "Get course ad by ID",
+                "description": "Retrieve details of a specific course ad by its ID",
+                "operationId": "getCourseAdsById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the course ad",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "1"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Course ad details retrieved successfully"
+                    },
+                    "404": {
+                        "description": "Course ad not found"
+                    }
+                }
+            }
+        },
+        "/frequently_questions": {
+            "get": {
+                "tags": [
+                    "Frequently Questions"
+                ],
+                "summary": "Get all FAQs",
+                "description": "Retrieve a list of frequently asked questions",
+                "operationId": "72d277eff5d51f3bdf754eecfb5374eb",
+                "responses": {
+                    "200": {
+                        "description": "List of FAQs retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/FrequentlyQuestion"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/frequently_questions/{id}": {
+            "get": {
+                "tags": [
+                    "Frequently Questions"
+                ],
+                "summary": "Retrieve an FAQ",
+                "description": "Get details of a specific FAQ by ID",
+                "operationId": "543a3da1431e104137e5ea59d97718c5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the FAQ to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "FAQ retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FrequentlyQuestion"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "FAQ not found"
+                    }
+                }
+            }
+        },
+        "/plan_register": {
+            "get": {
+                "tags": [
+                    "Plan Registers"
+                ],
+                "summary": "Retrieve all plan registers",
+                "description": "Get a list of all plan registers",
+                "operationId": "getAllPlanRegisters",
+                "responses": {
+                    "200": {
+                        "description": "List of plan registers retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/PlanRegister"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Plan Registers"
+                ],
+                "summary": "Store a new registration plan",
+                "description": " new registration plan with provided details",
+                "operationId": "storePlanRegister",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "training_plan_id": {
+                                        "description": "ID of the training plan",
+                                        "type": "integer",
+                                        "example": null
+                                    },
+                                    "full_name": {
+                                        "description": "Full name of the user",
+                                        "type": "string",
+                                        "example": "John Doe"
+                                    },
+                                    "phone": {
+                                        "description": "Phone number of the user",
+                                        "type": "string",
+                                        "example": "1234567890"
+                                    },
+                                    "email": {
+                                        "description": "Email address of the user",
+                                        "type": "string",
+                                        "example": "omaralsayyad20032003@gmail.com"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Registration plan stored successfully"
+                    }
+                }
+            }
+        },
+        "/plan_register/{id}": {
+            "get": {
+                "tags": [
+                    "Plan Registers"
+                ],
+                "summary": "Retrieve a specific plan register",
+                "description": "Get details of a specific plan register by ID",
+                "operationId": "getPlanRegisterById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the plan register to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Plan register retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/PlanRegister"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Retrieved successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Plan register not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Plan register not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/registration": {
+            "post": {
+                "tags": [
+                    "Registrations"
+                ],
+                "summary": "Create a new registration",
+                "description": "Store a new registration for a course",
+                "operationId": "createRegistration",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "course_id",
+                                    "full_name",
+                                    "phone",
+                                    "email",
+                                    "gender",
+                                    "address",
+                                    "notes"
+                                ],
+                                "properties": {
+                                    "course_id": {
+                                        "description": "ID of the course",
+                                        "type": "integer"
+                                    },
+                                    "full_name": {
+                                        "description": "Full name of the registrant",
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "description": "Phone number of the registrant",
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "description": "Email address of the registrant",
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "gender": {
+                                        "description": "Gender of the registrant",
+                                        "type": "string"
+                                    },
+                                    "address": {
+                                        "description": "Address of the registrant",
+                                        "type": "string"
+                                    },
+                                    "notes": {
+                                        "description": "Additional notes for the registration",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Registration created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Created Successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Course not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Course data not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/registration/{id}": {
+            "get": {
+                "tags": [
+                    "Registrations"
+                ],
+                "summary": "Get details of a specific registration",
+                "description": "Retrieve the registration details by ID",
+                "operationId": "getRegistrationById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the registration to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Registration data retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Retrieved successfully"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/Registration"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Registration not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Registration not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sections": {
+            "get": {
+                "tags": [
+                    "Sections"
+                ],
+                "summary": "Get all sections",
+                "description": "Retrieve a list of all sections",
+                "operationId": "getAllSections",
+                "responses": {
+                    "200": {
+                        "description": "List of sections retrieved successfully"
+                    }
+                }
+            }
+        },
+        "/sections/{id}": {
+            "get": {
+                "tags": [
+                    "Sections"
+                ],
+                "summary": "Get details of a specific section",
+                "description": "Retrieve the section details by ID",
+                "operationId": "getSectionById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the section to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Section data retrieved successfully"
+                    },
+                    "404": {
+                        "description": "Section not found"
+                    }
+                }
+            }
+        },
+        "/sliders": {
+            "get": {
+                "tags": [
+                    "Sliders"
+                ],
+                "summary": "Get all sliders",
+                "description": "Retrieve a list of all sliders",
+                "operationId": "getAllSliders",
+                "responses": {
+                    "200": {
+                        "description": "List of sliders retrieved successfully"
+                    }
+                }
+            }
+        },
+        "/sliders/{id}": {
+            "get": {
+                "tags": [
+                    "Sliders"
+                ],
+                "summary": "Get details of a specific slider",
+                "description": "Retrieve the slider details by ID",
+                "operationId": "getSliderById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the slider to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "slider data retrieved successfully"
+                    },
+                    "404": {
+                        "description": "slider not found"
+                    }
+                }
+            }
+        },
+        "/training_plan": {
+            "get": {
+                "tags": [
+                    "Training Plans"
+                ],
+                "summary": "Get all training plans",
+                "description": "Retrieve a list of all training plans",
+                "operationId": "getAllTrainingPlans",
+                "responses": {
+                    "200": {
+                        "description": "List of training plans retrieved successfully"
+                    }
+                }
+            }
+        },
+        "/training_plan/latestPlan": {
+            "get": {
+                "tags": [
+                    "Training Plans"
+                ],
+                "summary": "Get the latest training plan for the current year",
+                "description": "Retrieve the most recent training plan for the current year, if available",
+                "operationId": "getLatestTrainingPlan",
+                "responses": {
+                    "200": {
+                        "description": "Latest training plan retrieved successfully"
+                    },
+                    "404": {
+                        "description": "Training plan not found"
+                    }
+                }
+            }
+        },
+        "/venue": {
+            "get": {
+                "tags": [
+                    "Venues"
+                ],
+                "summary": "Get all venues",
+                "description": "Retrieve a list of all venues",
+                "operationId": "getAllVenues",
+                "responses": {
+                    "200": {
+                        "description": "List of venues retrieved successfully"
+                    }
+                }
+            }
+        },
+        "/venue/{id}": {
+            "get": {
+                "tags": [
+                    "Venues"
+                ],
+                "summary": "Get a venue by ID",
+                "description": "Retrieve details of a specific venue by its ID",
+                "operationId": "getVenueById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the venue",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Venue details retrieved successfully"
+                    },
+                    "404": {
+                        "description": "Venue not found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AboutUs": {
+                "description": "About Us model",
+                "properties": {
+                    "id": {
+                        "description": "ID of the about us record",
+                        "type": "integer"
+                    },
+                    "title": {
+                        "description": "Title of the about us section",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Description of the about us section",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Creation timestamp",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Last update timestamp",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Client": {
+                "description": "Client model",
+                "properties": {
+                    "id": {
+                        "description": "Client ID",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "img": {
+                        "description": "Image URL or binary data",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "url": {
+                        "description": "Client's URL",
+                        "type": "string",
+                        "example": "https://example.com"
+                    },
+                    "created_at": {
+                        "description": "Creation timestamp",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Last update timestamp",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "ContactUsIcons": {
+                "description": "Contact Us Icon model",
+                "properties": {
+                    "id": {
+                        "description": "Unique identifier for the contact us icon",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "contact_icons_type_id": {
+                        "description": "ID of the related icon type",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "url": {
+                        "description": "URL of the icon",
+                        "type": "string",
+                        "format": "url",
+                        "example": "https://example.com/icon.png"
+                    },
+                    "created_at": {
+                        "description": "Timestamp when the record was created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Timestamp when the record was last updated",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "ContactUs": {
+                "description": "Contact Us model",
+                "properties": {
+                    "id": {
+                        "description": "Unique identifier for the contact us record",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "type": {
+                        "description": "Type of contact request",
+                        "type": "string",
+                        "example": "General Inquiry"
+                    },
+                    "content": {
+                        "description": "Content of the contact us ",
+                        "type": "string",
+                        "example": "This is the content of the contact request."
+                    },
+                    "created_at": {
+                        "description": "Timestamp when the record was created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Timestamp when the record was last updated",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "FrequentlyQuestion": {
+                "title": "Frequently Asked Question",
+                "description": "A model representing a frequently asked question and its answer",
+                "properties": {
+                    "id": {
+                        "description": "ID of the FAQ",
+                        "type": "integer"
+                    },
+                    "question": {
+                        "description": "The question text",
+                        "type": "string"
+                    },
+                    "answer": {
+                        "description": "The answer text",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Timestamp when the FAQ was created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Timestamp when the FAQ was last updated",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Registration": {
+                "description": "Registration model",
+                "properties": {
+                    "id": {
+                        "description": "ID of the registration",
+                        "type": "integer"
+                    },
+                    "course_id": {
+                        "description": "ID of the course",
+                        "type": "integer"
+                    },
+                    "full_name": {
+                        "description": "Full name of the registrant",
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "Phone number of the registrant",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "Email address of the registrant",
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "gender": {
+                        "description": "Gender of the registrant",
+                        "type": "string"
+                    },
+                    "address": {
+                        "description": "Address of the registrant",
+                        "type": "string"
+                    },
+                    "notes": {
+                        "description": "Additional notes for the registration",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Creation timestamp",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Last update timestamp",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "PlanRegister": {
+                "description": "Plan register model",
+                "properties": {
+                    "id": {
+                        "description": "ID of the registration",
+                        "type": "integer"
+                    },
+                    "training_plan_id": {
+                        "description": "ID of the training plan",
+                        "type": "integer"
+                    },
+                    "full_name": {
+                        "description": "Full name of the user",
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "Phone number of the user",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "Email address of the user",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Creation timestamp",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Last update timestamp",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "responses": {
+            "400": {
+                "description": "Invalid request data"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Categories",
+            "description": "Categories"
+        },
+        {
+            "name": "Clients",
+            "description": "Clients"
+        },
+        {
+            "name": "Contact Us",
+            "description": "Contact Us"
+        },
+        {
+            "name": "Contact Us Icons",
+            "description": "Contact Us Icons"
+        },
+        {
+            "name": "Counters",
+            "description": "Counters"
+        },
+        {
+            "name": "Course Ads",
+            "description": "Course Ads"
+        },
+        {
+            "name": "Frequently Questions",
+            "description": "Frequently Questions"
+        },
+        {
+            "name": "Plan Registers",
+            "description": "Plan Registers"
+        },
+        {
+            "name": "Registrations",
+            "description": "Registrations"
+        },
+        {
+            "name": "Sections",
+            "description": "Sections"
+        },
+        {
+            "name": "Sliders",
+            "description": "Sliders"
+        },
+        {
+            "name": "Training Plans",
+            "description": "Training Plans"
+        },
+        {
+            "name": "Venues",
+            "description": "Venues"
+        }
+    ]
+}
