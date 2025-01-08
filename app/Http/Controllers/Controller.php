@@ -10,7 +10,8 @@ use OpenApi\Attributes as api;
 
 #[
     api\Info(version: "1.0.0",description: "York academy",title:"York academy" ),
-    api\Server(url: "http://127.0.0.1:8000/api/")
+    api\Server(url: "http://127.0.0.1:8000/api/"),
+    api\Server(url: "https://sleepy-tereshkova.212-227-199-24.plesk.page/api/"),
 
  ]
 class Controller extends BaseController

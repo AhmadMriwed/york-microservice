@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -9,6 +10,8 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
+    //Ignored because it is on the other system
     public function up(): void
     {
         Schema::create('training_plans', function (Blueprint $table) {

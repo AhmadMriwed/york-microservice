@@ -73,22 +73,22 @@
         <td><strong>Email:</strong></td>
         <td>{{ $registrationDetails['email'] }}</td>
     </tr>
-    <tr>
-        <td><strong>Phone:</strong></td>
-        <td>{{ $registrationDetails['phone'] }}</td>
-    </tr>
-    <tr>
-        <td><strong>Gender:</strong></td>
-        <td>{{ $registrationDetails['gender'] }}</td>
-    </tr>
-    <tr>
-        <td><strong>Address:</strong></td>
-        <td>{{ $registrationDetails['address'] }}</td>
-    </tr>
-    <tr>
-        <td><strong>Notes:</strong></td>
-        <td>{{ $registrationDetails['notes'] }}</td>
-    </tr>
+{{--    <tr>--}}
+{{--        <td><strong>Phone:</strong></td>--}}
+{{--        <td>{{ $registrationDetails['phone'] }}</td>--}}
+{{--    </tr>--}}
+{{--    <tr>--}}
+{{--        <td><strong>Gender:</strong></td>--}}
+{{--        <td>{{ $registrationDetails['gender'] }}</td>--}}
+{{--    </tr>--}}
+{{--    <tr>--}}
+{{--        <td><strong>Address:</strong></td>--}}
+{{--        <td>{{ $registrationDetails['address'] }}</td>--}}
+{{--    </tr>--}}
+{{--    <tr>--}}
+{{--        <td><strong>Notes:</strong></td>--}}
+{{--        <td>{{ $registrationDetails['notes'] }}</td>--}}
+{{--    </tr>--}}
     <tr>
         <td><strong>Course Code:</strong></td>
         <td>{{ $registrationDetails['course_code'] ?? 'N/A' }}</td>

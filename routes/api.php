@@ -69,6 +69,7 @@ Route::get('/',[AboutUsController::class,'index']);
 
 Route::group(['prefix' => 'training_plan'], function () {
     Route::get('/',[TrainingPlanController::class,'index']);
+    Route::get('/{id}',[TrainingPlanController::class,'show']);
     Route::get('/latestPlan',[TrainingPlanController::class,'getTrainingPlan']);
 });
 Route::group(['prefix' => 'contact_us'], function () {

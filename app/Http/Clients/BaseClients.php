@@ -70,6 +70,10 @@ class BaseClients
     public function sendApiRequest($method="GET", $url='',$body = [], $queryParameters = [])
     {
         try {
+            Log::info('HTTP method: ' . gettype($method) . ' - ' . var_export($method, true));
+            if (!is_string($method)) {
+                throw new \InvalidArgumentException("HTTP method must be a string");
+            }
             // إعداد البيانات
             $url =  $this->server_url.$url??'';
 

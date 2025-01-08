@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Clients\TrainingPlanClient;
 use App\Http\Resources\TrainingPlanResource;
 use App\Models\TrainingPlan;
 
 class TrainingPlanController extends Controller
 {
+    private $trainingPlanClient;
+
+    public function __construct()
+    {
+        $this->trainingPlanClient=new TrainingPlanClient();
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -26,7 +34,7 @@ class TrainingPlanController extends Controller
      */
     public function index()
     {
-        return TrainingPlanResource::collection( TrainingPlan::all())->additional(['message' => 'Retrieved successfully']);
+        return $this->trainingPlanClient->getAllTrainingPlans();
     }
 
 
@@ -49,12 +57,16 @@ class TrainingPlanController extends Controller
      */
     public function getTrainingPlan()
     {
-        $latestTrainingPlan = TrainingPlan::where('year', date('Y'))->latest()->first();
-        if($latestTrainingPlan)
-            return TrainingPlanResource::make($latestTrainingPlan)->additional(['message' => 'Retrieved successfully']);
-        else
-            return response()->json(['message' => 'Not found']);
+//        $latestTrainingPlan = TrainingPlan::where('year', date('Y'))->latest()->first();
+//        if($latestTrainingPlan)
+//            return TrainingPlanResource::make($latestTrainingPlan)->additional(['message' => 'Retrieved successfully']);
+//        else
+//            return response()->json(['message' => 'Not found']);
 
+        return $this->trainingPlanClient->getLastTrainingPlan();
     }
 
+    public function show(string $id){
+        return $this->trainingPlanClient->getTrainingPlanById($id);
+    }
 }

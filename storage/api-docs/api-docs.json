@@ -10,6 +10,9 @@
             "url": "http://127.0.0.1:8000/api/"
         },
         {
+            "url": "https://sleepy-tereshkova.212-227-199-24.plesk.page/api/"
+        },
+        {
             "url": "/api/"
         }
     ],
@@ -762,43 +765,140 @@
                         "application/json": {
                             "schema": {
                                 "required": [
-                                    "course_id",
-                                    "full_name",
-                                    "phone",
+                                    "title",
+                                    "description",
+                                    "fee",
+                                    "start_date",
+                                    "end_date",
+                                    "hours",
+                                    "language",
+                                    "code",
+                                    "category_id",
+                                    "venue_id",
+                                    "name",
                                     "email",
-                                    "gender",
-                                    "address",
-                                    "notes"
+                                    "url",
+                                    "job_title",
+                                    "selection_training",
+                                    "num_people",
+                                    "entity_type",
+                                    "course_ad_id"
                                 ],
                                 "properties": {
-                                    "course_id": {
-                                        "description": "ID of the course",
-                                        "type": "integer"
-                                    },
-                                    "full_name": {
-                                        "description": "Full name of the registrant",
+                                    "title": {
+                                        "description": "Title of the course",
                                         "type": "string"
                                     },
-                                    "phone": {
-                                        "description": "Phone number of the registrant",
+                                    "description": {
+                                        "description": "Description of the course",
+                                        "type": "string"
+                                    },
+                                    "fee": {
+                                        "description": "Fee for the course",
+                                        "type": "string"
+                                    },
+                                    "start_date": {
+                                        "description": "Start date of the course",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "end_date": {
+                                        "description": "End date of the course",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "hours": {
+                                        "description": "Number of hours for the course",
+                                        "type": "integer"
+                                    },
+                                    "language": {
+                                        "description": "Language of the course",
+                                        "type": "string"
+                                    },
+                                    "code": {
+                                        "description": "Unique code for the course",
+                                        "type": "string"
+                                    },
+                                    "category_id": {
+                                        "description": "ID of the course category",
+                                        "type": "integer"
+                                    },
+                                    "venue_id": {
+                                        "description": "ID of the course venue",
+                                        "type": "integer"
+                                    },
+                                    "name": {
+                                        "description": "Name of the trainer",
                                         "type": "string"
                                     },
                                     "email": {
-                                        "description": "Email address of the registrant",
+                                        "description": "Email address of the trainer",
                                         "type": "string",
                                         "format": "email"
                                     },
-                                    "gender": {
-                                        "description": "Gender of the registrant",
+                                    "url": {
+                                        "description": "URL for the course or related information",
+                                        "type": "string",
+                                        "format": "url"
+                                    },
+                                    "job_title": {
+                                        "description": "Job title of the trainer",
                                         "type": "string"
                                     },
-                                    "address": {
-                                        "description": "Address of the registrant",
+                                    "cv_trainer": {
+                                        "description": "Trainer's CV",
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "selection_training": {
+                                        "required": [
+                                            "name",
+                                            "email",
+                                            "functional_specialization",
+                                            "phone_number",
+                                            "trainer_id"
+                                        ],
+                                        "properties": {
+                                            "name": {
+                                                "description": "Name of the selection trainer",
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "description": "Email of the selection trainer",
+                                                "type": "string",
+                                                "format": "email"
+                                            },
+                                            "functional_specialization": {
+                                                "description": "Functional specialization of the selection trainer",
+                                                "type": "string"
+                                            },
+                                            "phone_number": {
+                                                "description": "Phone number of the selection trainer",
+                                                "type": "string"
+                                            },
+                                            "trainer_id": {
+                                                "description": "ID of the trainer",
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "num_people": {
+                                        "description": "Number of people registered",
+                                        "type": "integer"
+                                    },
+                                    "entity_type": {
+                                        "description": "Entity type (e.g., company, individual)",
                                         "type": "string"
                                     },
-                                    "notes": {
-                                        "description": "Additional notes for the registration",
-                                        "type": "string"
+                                    "user_id": {
+                                        "description": "ID of the user (nullable)",
+                                        "type": "integer",
+                                        "nullable": true
+                                    },
+                                    "course_ad_id": {
+                                        "description": "ID of the course advertisement",
+                                        "type": "integer"
                                     }
                                 },
                                 "type": "object"
