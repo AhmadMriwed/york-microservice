@@ -57,6 +57,7 @@ class TrainingPlanController extends Controller
      */
     public function getTrainingPlan()
     {
+        
 //        $latestTrainingPlan = TrainingPlan::where('year', date('Y'))->latest()->first();
 //        if($latestTrainingPlan)
 //            return TrainingPlanResource::make($latestTrainingPlan)->additional(['message' => 'Retrieved successfully']);

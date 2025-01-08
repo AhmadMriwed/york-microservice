@@ -16,6 +16,7 @@ class TrainingPlanClient extends BaseClients
         return $this->sendApiRequest('GET',$this->TrainingPlan.'/'.$id);
     }
     public function getLastTrainingPlan(){
+      
         return $this->sendApiRequest('GET',$this->TrainingPlan.'/get_last');
     }
 
