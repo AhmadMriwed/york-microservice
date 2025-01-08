@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Clients\CourseAdsClient;
+use App\Http\Clients\RegistrationClient;
 use App\Http\Resources\RegistrationResource;
 use App\Models\Registration;
 use App\Http\Requests\StoreRegistrationsRequest;
@@ -13,11 +14,11 @@ use Illuminate\Support\Facades\Log;
 
 class RegistrationsController extends Controller
 {
-    private $courseAdsClient;
+    private $registrationClient;
 
     public function __construct()
     {
-        $this->courseAdsClient = new CourseAdsClient(); // Initialize the client
+        $this->registrationClient=new RegistrationClient();
     }
 
 
@@ -36,14 +37,36 @@ class RegistrationsController extends Controller
      *         required=true,
      *         @OA\JsonContent(
      *             type="object",
-     *             required={"course_id", "full_name", "phone", "email", "gender", "address", "notes"},
-     *             @OA\Property(property="course_id", type="integer", description="ID of the course"),
-     *             @OA\Property(property="full_name", type="string", description="Full name of the registrant"),
-     *             @OA\Property(property="phone", type="string", description="Phone number of the registrant"),
-     *             @OA\Property(property="email", type="string", format="email", description="Email address of the registrant"),
-     *             @OA\Property(property="gender", type="string", description="Gender of the registrant"),
-     *             @OA\Property(property="address", type="string", description="Address of the registrant"),
-     *             @OA\Property(property="notes", type="string", description="Additional notes for the registration")
+     *             required={"title", "description", "fee", "start_date", "end_date", "hours", "language", "code", "category_id", "venue_id", "name", "email", "url", "job_title", "selection_training", "num_people", "entity_type", "course_ad_id"},
+     *             @OA\Property(property="title", type="string", description="Title of the course"),
+     *             @OA\Property(property="description", type="string", description="Description of the course"),
+     *             @OA\Property(property="fee", type="string", description="Fee for the course"),
+     *             @OA\Property(property="start_date", type="string", format="date", description="Start date of the course"),
+     *             @OA\Property(property="end_date", type="string", format="date", description="End date of the course"),
+     *             @OA\Property(property="hours", type="integer", description="Number of hours for the course"),
+     *             @OA\Property(property="language", type="string", description="Language of the course"),
+     *             @OA\Property(property="code", type="string", description="Unique code for the course"),
+     *             @OA\Property(property="category_id", type="integer", description="ID of the course category"),
+     *             @OA\Property(property="venue_id", type="integer", description="ID of the course venue"),
+     *             @OA\Property(property="name", type="string", description="Name of the trainer"),
+     *             @OA\Property(property="email", type="string", format="email", description="Email address of the trainer"),
+     *             @OA\Property(property="url", type="string", format="url", description="URL for the course or related information"),
+     *             @OA\Property(property="job_title", type="string", description="Job title of the trainer"),
+     *             @OA\Property(property="cv_trainer", type="string", nullable=true, description="Trainer's CV"),
+     *             @OA\Property(
+     *                 property="selection_training",
+     *                 type="object",
+     *                 required={"name", "email", "functional_specialization", "phone_number", "trainer_id"},
+     *                 @OA\Property(property="name", type="string", description="Name of the selection trainer"),
+     *                 @OA\Property(property="email", type="string", format="email", description="Email of the selection trainer"),
+     *                 @OA\Property(property="functional_specialization", type="string", description="Functional specialization of the selection trainer"),
+     *                 @OA\Property(property="phone_number", type="string", description="Phone number of the selection trainer"),
+     *                 @OA\Property(property="trainer_id", type="integer", description="ID of the trainer")
+     *             ),
+     *             @OA\Property(property="num_people", type="integer", description="Number of people registered"),
+     *             @OA\Property(property="entity_type", type="string", description="Entity type (e.g., company, individual)"),
+     *             @OA\Property(property="user_id", type="integer", nullable=true, description="ID of the user (nullable)"),
+     *             @OA\Property(property="course_ad_id", type="integer", description="ID of the course advertisement")
      *         )
      *     ),
      *     @OA\Response(
@@ -51,9 +74,8 @@ class RegistrationsController extends Controller
      *         description="Registration created successfully",
      *         @OA\JsonContent(
      *             type="object",
-     *             @OA\Property(property="message", type="string", example="Created Successfully"),
-     *
-     *          )
+     *             @OA\Property(property="message", type="string", example="Created Successfully")
+     *         )
      *     ),
      *     @OA\Response(
      *         response=404,
@@ -73,18 +95,13 @@ class RegistrationsController extends Controller
      *     )
      * )
      */
+
     public function store(StoreRegistrationsRequest $request)
     {
-        $courseData = $this->courseAdsClient->getCourseAdsById($request->course_id);
 
-        if (!$courseData) {
-            return response()->json([
-                'message' => 'Course data not found.',
-            ], 404);
-        }
-
-        return RegistrationResource::make(RegistrationService::register($request->validated(),$courseData))
-            ->additional(['message'=>'Created Successfully']);
+        $response= $this->registrationClient->register(request()->all());
+       RegistrationService::register($request->all(),$response);
+        return $response;
     }
 
 
