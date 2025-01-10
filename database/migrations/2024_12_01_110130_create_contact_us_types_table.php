@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contact_us_icons', function (Blueprint $table) {
+        Schema::create('contact_us_types', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('type_id')->references('id')->on('contact_us_icons_types')->cascadeOnDelete();
-            $table->string('url',4096);
+            $table->string('type');
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contact_us_icons');
+        Schema::dropIfExists('contact_us_types');
     }
 };

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('plan_registers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('training_plan_id')->references('id')->on('training_plans')->cascadeOnDelete();
+            $table->integer('training_plan_id')->nullable();
             $table->string('full_name');
             $table->string('phone');
             $table->string('email');

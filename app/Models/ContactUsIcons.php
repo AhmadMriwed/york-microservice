@@ -9,7 +9,7 @@ class ContactUsIcons extends Model
 {
     use HasFactory;
     public function type(){
-        return $this->belongsTo(ContactUsIconsType::class,'contact_icons_type_id');
+        return $this->belongsTo(ContactUsIconsType::class,'type_id');
 
     }
 }

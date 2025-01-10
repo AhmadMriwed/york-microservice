@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('contact_us', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
+            $table->foreignId('type_id')->references('id')->on('contact_us_types')->cascadeOnDelete();
             $table->longText('content');
             $table->timestamps();
         });

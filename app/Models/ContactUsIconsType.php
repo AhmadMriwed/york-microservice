@@ -10,7 +10,7 @@ class ContactUsIconsType extends Model
     use HasFactory;
 
     public function icons(){
-        return $this->hasMany(ContactUsIcons::class,'contact_icons_type_id');
+        return $this->hasMany(ContactUsIcons::class,'type_id');
 
     }
 }
