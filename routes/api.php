@@ -69,8 +69,9 @@ Route::get('/',[AboutUsController::class,'index']);
 
 Route::group(['prefix' => 'training_plan'], function () {
     Route::get('/',[TrainingPlanController::class,'index']);
-    Route::get('/{id}',[TrainingPlanController::class,'show']);
     Route::get('/latestPlan',[TrainingPlanController::class,'getTrainingPlan']);
+    Route::get('/{id}',[TrainingPlanController::class,'show'])->where('id', '[0-9]+');
+  
 });
 Route::group(['prefix' => 'contact_us'], function () {
     Route::get('/',[ContactUsController::class,'index']);
