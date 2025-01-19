@@ -24,6 +24,7 @@ class SearchAdvanceRequest extends FormRequest
         return [
             'languages.*'=>['string'],
             'languages'=>['array'],
+            'title' => ['string'],
             'code' => ['string'],
             'venue_ids.*'=>['integer'],
             'venue_ids'=>['array'],

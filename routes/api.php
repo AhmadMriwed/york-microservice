@@ -41,6 +41,7 @@ Route::group(['prefix' => 'course_ads'], function () {//ok
     Route::get('/', [CourseAdsController::class, 'getAllCourseAds']);
     Route::get('/search', [CourseAdsController::class, 'searchAdvanceCourseAds']);
     Route::get('/{id}', [CourseAdsController::class, 'getCourseAdsById']);
+    Route::get('/getMap/filterCourse', [CourseAdsController::class, 'getMapFilterCourse']);
 });
 
 Route::group(['prefix' => 'category'], function () {//ok

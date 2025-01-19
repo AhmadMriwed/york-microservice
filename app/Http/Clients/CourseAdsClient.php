@@ -18,4 +18,8 @@ class CourseAdsClient extends BaseClients{
     {
         return $this->sendApiRequest("GET",$this->COURSEADS.'/'.$id);
     }
+    public function getMapFilterCourse()
+    {  
+        return $this->sendApiRequest("GET",$this->COURSEADS.'/getMap/filterCourse');
+    }
 }
