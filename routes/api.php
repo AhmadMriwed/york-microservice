@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\ContactUsIconsController;
@@ -123,6 +124,12 @@ Route::group(['prefix' => 'registration'], function () {
 Route::group(['prefix' => '/upcoming-courses'], function () {
     Route::get('/',[UpcomingCourseController::class,'index']);
     Route::get('/{upcomingCourse}',[UpcomingCourseController::class,'show']);
+});
+
+Route::group(['prefix' => '/certificates'], function () {
+    Route::get('/',[CertificateController::class,'index']);
+    Route::get('/search',[CertificateController::class,'certificates_search']);
+    Route::get('/{certificate}',[CertificateController::class,'show']);
 });
 
 

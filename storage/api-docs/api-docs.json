@@ -86,6 +86,142 @@
                 }
             }
         },
+        "/certificates": {
+            "get": {
+                "tags": [
+                    "Certificates"
+                ],
+                "summary": "Get all certificates",
+                "description": "Retrieve a list of all certificates",
+                "operationId": "getCertificates",
+                "responses": {
+                    "200": {
+                        "description": "List of certificates retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Retrieved successfully"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Certificate"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/certificates/{certificate_id}": {
+            "get": {
+                "tags": [
+                    "Certificates"
+                ],
+                "summary": "Get a specific certificate",
+                "description": "Retrieve details of a specific certificate by its ID",
+                "operationId": "getCertificate",
+                "parameters": [
+                    {
+                        "name": "certificate_id",
+                        "in": "path",
+                        "description": "The ID of the certificate to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Certificate retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Retrieved successfully"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/Certificate"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Certificate not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Certificate not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/certificates/search": {
+            "get": {
+                "tags": [
+                    "Certificates"
+                ],
+                "summary": "Search for a certificate",
+                "description": "Search for a certificate by its unique code and return the details if found.",
+                "operationId": "certificatesSearch",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "description": "The unique code of the certificate to search for",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "ABC123456"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Certificate retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Retrieved successfully"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/Certificate"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/clients": {
             "get": {
                 "summary": "Retrieve a list of clients",
@@ -1364,6 +1500,68 @@
                 },
                 "type": "object"
             },
+            "Certificate": {
+                "required": [
+                    "certificate_id",
+                    "trainer_full_name",
+                    "valid_from",
+                    "valid_to"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "Certificate ID",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "certificate_id": {
+                        "description": "Unique certificate identifier",
+                        "type": "string",
+                        "example": "ABC123456"
+                    },
+                    "certificate_img": {
+                        "description": "URL of the certificate image",
+                        "type": "string",
+                        "example": "https://example.com/certificate.png",
+                        "nullable": true
+                    },
+                    "trainer_full_name": {
+                        "description": "Full name of the trainer",
+                        "type": "string",
+                        "example": "John Doe"
+                    },
+                    "trainer_img": {
+                        "description": "URL of the trainer's image",
+                        "type": "string",
+                        "example": "https://example.com/trainer.png",
+                        "nullable": true
+                    },
+                    "valid_from": {
+                        "description": "Date when the certificate becomes valid",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2024-01-01"
+                    },
+                    "valid_to": {
+                        "description": "Date when the certificate expires",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2024-12-31"
+                    },
+                    "created_at": {
+                        "description": "Timestamp when the certificate was created",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-01-20T10:00:00Z"
+                    },
+                    "updated_at": {
+                        "description": "Timestamp when the certificate was last updated",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-01-20T12:00:00Z"
+                    }
+                },
+                "type": "object"
+            },
             "Client": {
                 "description": "Client model",
                 "properties": {
@@ -1621,6 +1819,22 @@
             }
         },
         "responses": {
+            "404": {
+                "description": "Certificate not found",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "No Results Found"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
             "400": {
                 "description": "Invalid request data"
             }
@@ -1630,6 +1844,10 @@
         {
             "name": "Categories",
             "description": "Categories"
+        },
+        {
+            "name": "Certificates",
+            "description": "Certificates"
         },
         {
             "name": "Clients",
