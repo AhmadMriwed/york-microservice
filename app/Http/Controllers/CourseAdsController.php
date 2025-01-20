@@ -33,6 +33,16 @@ class CourseAdsController extends Controller
      *             example={"English"}
      *         )
      *     ),
+      *     @OA\Parameter(
+     *         name="title",
+     *         in="query",
+     *         description="Filter by course title",
+     *         required=false,
+     *         @OA\Schema(
+     *             type="string",
+     *             example=""
+     *         )
+     *     ),
      *     @OA\Parameter(
      *         name="code",
      *         in="query",
@@ -152,6 +162,24 @@ class CourseAdsController extends Controller
     public function getCourseAdsById(string $id)
     {
         return $this->courseAdsClient->getCourseAdsById($id);
+    }
+
+     /**
+     * @OA\Get(
+     *     path="/course_ads/getMap/filterCourse",
+     *     summary="Get map  filter course",
+     *     description="Retrieve a map of filter course",
+     *     operationId="getMapFilterCourse",
+     *     tags={"Course Ads"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Map of filter course retrieved successfully",
+     *     )
+     * )
+     */
+    public function getMapFilterCourse()
+    {
+        return $this->courseAdsClient->getMapFilterCourse();
     }
 }
 

@@ -413,6 +413,16 @@
                         }
                     },
                     {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Filter by course title",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": ""
+                        }
+                    },
+                    {
                         "name": "code",
                         "in": "query",
                         "description": "Filter by course code",
@@ -541,6 +551,21 @@
                     },
                     "404": {
                         "description": "Course ad not found"
+                    }
+                }
+            }
+        },
+        "/course_ads/getMap/filterCourse": {
+            "get": {
+                "tags": [
+                    "Course Ads"
+                ],
+                "summary": "Get map  filter course",
+                "description": "Retrieve a map of filter course",
+                "operationId": "getMapFilterCourse",
+                "responses": {
+                    "200": {
+                        "description": "Map of filter course retrieved successfully"
                     }
                 }
             }
