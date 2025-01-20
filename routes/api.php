@@ -14,6 +14,7 @@ use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TempControler;
 use App\Http\Controllers\TrainingPlanController;
+use App\Http\Controllers\UpcomingCourseController;
 use App\Http\Controllers\VenueController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -71,7 +72,7 @@ Route::group(['prefix' => 'training_plan'], function () {
     Route::get('/',[TrainingPlanController::class,'index']);
     Route::get('/latestPlan',[TrainingPlanController::class,'getTrainingPlan']);
     Route::get('/{id}',[TrainingPlanController::class,'show'])->where('id', '[0-9]+');
-  
+
 });
 Route::group(['prefix' => 'contact_us'], function () {
     Route::get('/',[ContactUsController::class,'index']);
@@ -112,9 +113,15 @@ Route::group(['prefix' => 'plan_register'], function () {
     Route::get('/',[PlanRegisterController::class,'index']);
     Route::get('/{planRegister}',[PlanRegisterController::class,'show']);
 });
+
 Route::group(['prefix' => 'registration'], function () {
     Route::post('/',[RegistrationsController::class,'store']);
     Route::get('/{registrations}',[RegistrationsController::class,'show']);
+});
+
+Route::group(['prefix' => '/upcoming-courses'], function () {
+    Route::get('/',[UpcomingCourseController::class,'index']);
+    Route::get('/{upcomingCourse}',[UpcomingCourseController::class,'show']);
 });
 
 
