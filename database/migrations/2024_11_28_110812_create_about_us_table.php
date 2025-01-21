@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('about_us', function (Blueprint $table) {
             $table->id();
-            $table->longText('content');
+            $table->longText('title');
+            $table->longText('description');
+            $table->string('url',4096);
             $table->timestamps();
         });
     }

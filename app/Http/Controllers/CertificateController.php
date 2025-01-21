@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SearchCertificateRequest;
 use App\Http\Resources\CertificateResource;
 use App\Models\Certificate;
-use App\Http\Requests\StoreCertificateRequest;
-use App\Http\Requests\UpdateCertificateRequest;
 
 class CertificateController extends Controller
 {

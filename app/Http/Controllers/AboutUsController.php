@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\AboutUsResource;
 use App\Models\aboutUs;
 
 
@@ -25,6 +26,6 @@ class AboutUsController extends Controller
      */
     public function index()
     {
-        return aboutUs::get();
-    }
+        return AboutUsResource::collection(AboutUs::get())
+            ->additional(['message' => 'Retrieved successfully']);    }
 }
