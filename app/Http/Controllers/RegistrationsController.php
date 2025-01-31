@@ -98,8 +98,10 @@ class RegistrationsController extends Controller
 
     public function store(StoreRegistrationsRequest $request)
     {
+        
 
         $response= $this->registrationClient->register(request()->all());
+        
        RegistrationService::register($request->all(),$response);
         return $response;
     }

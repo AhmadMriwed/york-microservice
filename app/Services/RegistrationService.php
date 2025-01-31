@@ -21,19 +21,19 @@ class RegistrationService
 
 
     $registrationDetails = [
-        'full_name' => $attributes['name'],
-        'email' => $attributes['email'],
+        'full_name' => $attributes['name']??null,
+        'email' => $attributes['email']?? null,
         // 'gender'=>$attributes['gender'],
         // 'phone'=>$attributes['phone'],
         //  'address'=>$attributes['address'],
         // 'notes'=>$attributes['notes'],
-        'course_id'=>$attributes['course_ad_id'],
-        'course_code' => $attributes['code'],
-        'course_title' => $attributes['title'] ,
-        'course_venue' => $response['data']['venue']['title'],
-        'course_category' => $response['data']['category']['title'],
-        'course_start_date' => $attributes['start_date'],
-        'course_end_date' => $attributes['end_date'],
+        'course_id'=>$attributes['course_ad_id']?? null,
+        'course_code' => $attributes['code']?? null,
+        'course_title' => $attributes['title'] ?? null,
+        'course_venue' => $response['data']['venue']['title']?? null,
+        'course_category' => $response['data']['category']['title']?? null,
+        'course_start_date' => $attributes['start_date']?? null,
+        'course_end_date' => $attributes['end_date']?? null,
 
     ];
 

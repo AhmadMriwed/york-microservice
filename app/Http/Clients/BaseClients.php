@@ -83,6 +83,7 @@ class BaseClients
             // إعداد العميل
             //$client = new Client();
             // إرسال الطلب
+
             $response = $this->client->request($method,$url,
             [
                 'verify' => false, // تجاوز التحقق من الشهادة SSL
@@ -99,10 +100,11 @@ class BaseClients
             return json_decode($body, true);
 
         } catch (RequestException $e) {
-
+           
             // تعامل مع الأخطاء هنا
             $statusCode = $e->getResponse() ? $e->getResponse()->getStatusCode() : null;
             $errorBody = $e->getResponse() ? $e->getResponse()->getBody()->getContents() : $e->getMessage();
+        
             $jsonErrorBody=json_decode( $errorBody );
             // يمكنك التحقق من $statusCode و $errorBody واتخاذ الإجراء المناسب
             // على سبيل المثال، إرجاع الخطأ كمصفوفة
