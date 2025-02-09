@@ -78,6 +78,7 @@ Route::group(['prefix' => 'training_plan'], function () {
 });
 Route::group(['prefix' => 'contact_us'], function () {
     Route::get('/',[ContactUsController::class,'index']);
+    Route::post('/send-message',[ContactUsController::class,'sendMessage']);
     Route::get('/{contactUs}',[ContactUsController::class,'show']);
 });
 Route::group(['prefix' => 'contact_us_icons'], function () {

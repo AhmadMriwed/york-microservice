@@ -8,11 +8,10 @@ use App\Models\Certificate;
 
 class CertificateController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
-
-
     /**
      * @OA\Get(
      *     path="/certificates",
