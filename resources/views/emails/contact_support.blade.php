@@ -9,10 +9,10 @@
 <body>
 
 <h1>Support</h1>
-<p>Name: {{ $mailData['name'] }}</p>
+<p>Name: {{ $mailData['first_name'] }}</p>
 <p>last_name: {{ $mailData['last_name'] }}</p>
 <p>phone: {{ $mailData['phone'] }}</p>
-<p>Email: {{ $mailData['Email'] }}</p>
-<p>Message: {{ $mailData['Message'] }}</p>
+<p>Email: {{ $mailData['email'] }}</p>
+<p>Message: {{ $mailData['message'] }}</p>
 </body>
 </html>

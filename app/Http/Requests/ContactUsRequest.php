@@ -22,11 +22,11 @@ class ContactUsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'regex:/^[0-9]{10,15}$/'],
-            'Email' => ['required', 'string', 'email', 'max:255'],
-            'Message' => ['required', 'string', 'max:1000'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'message' => ['required', 'string', 'max:1000'],
 
         ];
     }

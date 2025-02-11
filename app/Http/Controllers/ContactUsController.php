@@ -112,12 +112,12 @@ class ContactUsController extends Controller
      *         required=true,
      *         @OA\JsonContent(
      *             type="object",
-     *             required={"name", "last_name", "phone", "Email", "Message"},
-     *             @OA\Property(property="name", type="string", description="First name of the user", example="John"),
+     *             required={"first_name", "last_name", "phone", "email", "message"},
+     *             @OA\Property(property="first_name", type="string", description="First name of the user", example="John"),
      *             @OA\Property(property="last_name", type="string", description="Last name of the user", example="Doe"),
      *             @OA\Property(property="phone", type="string", description="Phone number of the user", example="1234567890"),
-     *             @OA\Property(property="Email", type="string", format="email", description="Email address of the user", example="john.doe@example.com"),
-     *             @OA\Property(property="Message", type="string", description="Message content", example="Hello, I have a question about your services.")
+     *             @OA\Property(property="email", type="string", format="email", description="Email address of the user", example="john.doe@example.com"),
+     *             @OA\Property(property="message", type="string", description="Message content", example="Hello, I have a question about your services.")
      *         )
      *     ),
      *     @OA\Response(
@@ -159,16 +159,14 @@ class ContactUsController extends Controller
     public function sendMessage(ContactUsRequest $request)
     {
         $mailData = [
-            "name" => $request->name,
+            "first_name" => $request->first_name,
             "last_name" => $request->last_name,
             "phone" => $request->phone,
-            "Email" => $request->Email,
-            "Message" => $request->Message,
+            "email" => $request->email,
+            "message" => $request->message,
         ];
-        //return $mailData;
-       // Mail::to("support@oxfordtraining.uk")->send(new sendMessage($mailData));
 
-        Mail::to($mailData['Email'])->send(new ContactUsUserMail($mailData));
+        Mail::to($mailData['email'])->send(new ContactUsUserMail($mailData));
         Mail::to('099450735z@gmail.com')->send(new ContactUsMail($mailData));
       }
 

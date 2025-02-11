@@ -524,14 +524,14 @@
                         "application/json": {
                             "schema": {
                                 "required": [
-                                    "name",
+                                    "first_name",
                                     "last_name",
                                     "phone",
-                                    "Email",
-                                    "Message"
+                                    "email",
+                                    "message"
                                 ],
                                 "properties": {
-                                    "name": {
+                                    "first_name": {
                                         "description": "First name of the user",
                                         "type": "string",
                                         "example": "John"
@@ -546,13 +546,13 @@
                                         "type": "string",
                                         "example": "1234567890"
                                     },
-                                    "Email": {
+                                    "email": {
                                         "description": "Email address of the user",
                                         "type": "string",
                                         "format": "email",
                                         "example": "john.doe@example.com"
                                     },
-                                    "Message": {
+                                    "message": {
                                         "description": "Message content",
                                         "type": "string",
                                         "example": "Hello, I have a question about your services."
