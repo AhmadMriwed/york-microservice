@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CertificateController;
+use App\Http\Controllers\CertificateReviewController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\ContactUsIconsController;
@@ -132,6 +133,10 @@ Route::group(['prefix' => '/certificates'], function () {
     Route::get('/search',[CertificateController::class,'certificates_search']);
     Route::get('/{certificate}',[CertificateController::class,'show']);
 });
+
+Route::group(['prefix' => '/certificates-review'], function () {
+    Route::post('/',[CertificateReviewController::class,'store']);
+   });
 
 
 

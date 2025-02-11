@@ -222,6 +222,121 @@
                 }
             }
         },
+        "/certificates-review": {
+            "post": {
+                "tags": [
+                    "Certificate Review"
+                ],
+                "summary": "Send a request for certificate review",
+                "description": "Send a request for certificate review to the admin.",
+                "operationId": "store",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "first_name",
+                                    "last_name",
+                                    "certificate_code",
+                                    "email",
+                                    "message"
+                                ],
+                                "properties": {
+                                    "first_name": {
+                                        "description": "First name of the user",
+                                        "type": "string",
+                                        "example": "John"
+                                    },
+                                    "last_name": {
+                                        "description": "Last name of the user",
+                                        "type": "string",
+                                        "example": "Doe"
+                                    },
+                                    "certificate_code": {
+                                        "description": "certificate_coder",
+                                        "type": "string",
+                                        "example": "123456789"
+                                    },
+                                    "email": {
+                                        "description": "Email address of the user",
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "omaralsayyad20032003@gmail.com"
+                                    },
+                                    "message": {
+                                        "description": "Message content",
+                                        "type": "string",
+                                        "example": "Hello, I have a question about your services."
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Message sent successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Your message has been sent successfully."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "type": "object",
+                                            "additionalProperties": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                },
+                                                "property": null
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "An error occurred while sending the message."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/clients": {
             "get": {
                 "summary": "Retrieve a list of clients",
@@ -1963,6 +2078,10 @@
         {
             "name": "Certificates",
             "description": "Certificates"
+        },
+        {
+            "name": "Certificate Review",
+            "description": "Certificate Review"
         },
         {
             "name": "Clients",
