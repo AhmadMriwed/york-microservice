@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SearchCertificateRequest;
+use App\Http\Requests\CertificateSearchRequest;
 use App\Http\Resources\CertificateResource;
 use App\Models\Certificate;
 
@@ -122,7 +122,7 @@ class CertificateController extends Controller
      * )
      */
 
-    public function certificates_search(SearchCertificateRequest $request)
+    public function certificates_search(CertificateSearchRequest $request)
     {
         $certificateIdTerm = $request->input('code');
 

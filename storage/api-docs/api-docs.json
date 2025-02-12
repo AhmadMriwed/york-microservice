@@ -936,6 +936,74 @@
                 }
             }
         },
+        "/discounts": {
+            "get": {
+                "tags": [
+                    "Discounts"
+                ],
+                "summary": "Get all discounts",
+                "description": "Retrieve a list of all discounts",
+                "operationId": "getDiscounts",
+                "responses": {
+                    "200": {
+                        "description": "List of discounts retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Retrieved successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/discounts/search": {
+            "get": {
+                "tags": [
+                    "Discounts"
+                ],
+                "summary": "Search for a discount",
+                "description": "Search for a discount by its unique code and return the details if found.",
+                "operationId": "discountsSearch",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "description": "The unique code of the discount to search for",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "ABC123456"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "discount retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Retrieved successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/frequently_questions": {
             "get": {
                 "tags": [
@@ -2102,6 +2170,10 @@
         {
             "name": "Course Ads",
             "description": "Course Ads"
+        },
+        {
+            "name": "Discounts",
+            "description": "Discounts"
         },
         {
             "name": "Frequently Questions",

@@ -27,5 +27,6 @@ class AboutUsController extends Controller
     public function index()
     {
         return AboutUsResource::collection(AboutUs::get())
-            ->additional(['message' => 'Retrieved successfully']);    }
+            ->additional(['message' => 'Retrieved successfully']);
+    }
 }
