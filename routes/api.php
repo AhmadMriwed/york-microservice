@@ -10,6 +10,7 @@ use App\Http\Controllers\ContactUsIconsController;
 use App\Http\Controllers\CounterController;
 use App\Http\Controllers\CourseAdsController;
 use App\Http\Controllers\DiscountController;
+use App\Http\Controllers\FooterDetailController;
 use App\Http\Controllers\FrequentlyQuestionController;
 use App\Http\Controllers\PlanRegisterController;
 use App\Http\Controllers\RegistrationsController;
@@ -144,5 +145,10 @@ Route::group(['prefix' => '/certificates-review'], function () {
 Route::group(['prefix' => '/discounts'], function () {
     Route::get('/',[DiscountController::class,'index']);
     Route::get('/search',[DiscountController::class,'discount_search']);
+});
+
+Route::group(['prefix' => '/footer-details'], function () {
+
+    Route::get('/', [FooterDetailController::class, 'index']);
 });
 

@@ -1004,6 +1004,21 @@
                 }
             }
         },
+        "/footer-details": {
+            "get": {
+                "tags": [
+                    "Footer"
+                ],
+                "summary": "Get footer details",
+                "description": "Retrieve all footer details",
+                "operationId": "getFooterDetails",
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved footer details"
+                    }
+                }
+            }
+        },
         "/frequently_questions": {
             "get": {
                 "tags": [
@@ -2174,6 +2189,10 @@
         {
             "name": "Discounts",
             "description": "Discounts"
+        },
+        {
+            "name": "Footer",
+            "description": "Footer"
         },
         {
             "name": "Frequently Questions",
