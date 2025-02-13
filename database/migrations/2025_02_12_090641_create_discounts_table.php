@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('code',9)->unique();
             $table->double('discount_percentage')->nullable();
             $table->double('discount_fee')->nullable();
-            $table->timestamp('start_date');
-            $table->timestamp('end_date');
+            $table->date('start_date');
+            $table->date('end_date');
 
             $table->timestamps();
         });
