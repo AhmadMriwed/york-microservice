@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('code',9)->unique();
-            $table->double('discount_percentage');
-            $table->double('discount_fee');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->double('discount_percentage')->nullable();
+            $table->double('discount_fee')->nullable();
+            $table->timestamp('start_date');
+            $table->timestamp('end_date');
 
             $table->timestamps();
         });

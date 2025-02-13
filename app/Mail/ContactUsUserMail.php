@@ -30,7 +30,7 @@ class ContactUsUserMail extends Mailable
     {
         return new Envelope(
             subject: 'Contact Us Mail',
-            from: new Address('Training@yorkbritishacademy.uk', 'York British Academy')
+            from: new Address('Training@yorkacademy.uk', 'York British Academy')
         );
     }
 

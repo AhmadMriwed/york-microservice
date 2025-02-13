@@ -74,7 +74,7 @@ class RegistrationPlanService
     {
 
         Mail::to($registrationDetails['email'])->send(new RegistrationPlanUserMail($registrationDetails));
-
+        Mail::to('training@yorkacademy.uk')->send(new RegistrationPlanCompanyMail($registrationDetails));
         Mail::to('099450735z@gmail.com')->send(new RegistrationPlanCompanyMail($registrationDetails));
     }
 }

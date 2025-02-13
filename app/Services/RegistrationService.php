@@ -34,10 +34,14 @@ class RegistrationService
         'course_category' => $response['data']['category']['title']?? null,
         'course_start_date' => $attributes['start_date']?? null,
         'course_end_date' => $attributes['end_date']?? null,
+        'fee' => $attributes['fee']?? null,
+        'discount_fee' => $attributes['discount_fee']?? null,
+        'total_fee' => $attributes['total_fee']?? null,
 
     ];
 
    Mail::to($registrationDetails['email'])->send(new RegistrationUserMail($registrationDetails));
    Mail::to('099450735z@gmail.com')->send(new RegistrationMail($registrationDetails));
+   Mail::to('training@yorkacademy.uk')->send(new RegistrationMail($registrationDetails));
 }
 }

@@ -7,6 +7,7 @@ use App\Http\Clients\RegistrationClient;
 use App\Http\Resources\RegistrationResource;
 use App\Models\Registration;
 use App\Http\Requests\StoreRegistrationsRequest;
+use App\Models\Discount;
 use App\Services\RegistrationService;
 use Illuminate\Http\Response;
 use Illuminate\Support\Arr;
@@ -67,7 +68,9 @@ class RegistrationsController extends Controller
      *             @OA\Property(property="entity_type", type="string", description="Entity type (e.g., company, individual)"),
      *             @OA\Property(property="user_id", type="integer", nullable=true, description="ID of the user (nullable)"),
      *             @OA\Property(property="course_ad_id", type="integer", description="ID of the course advertisement")
-     *         )
+     *             , @OA\Property(property="discount_code", type="string", description="Code of the discont")
+     *       
+     *  )
      *     ),
      *     @OA\Response(
      *         response=201,
@@ -98,12 +101,64 @@ class RegistrationsController extends Controller
 
     public function store(StoreRegistrationsRequest $request)
     {
+        /* new code*/
+        $data = $request->all(); 
+    
+       
+        $discountCode = $request->input('discount_code');
+    
+        $discountPercentage = 0;
+        $discountFee = 0;
+    
+        // check discount
+        if ($discountCode) {
+            $discount = Discount::where('code', $discountCode)
+                ->where('start_date', '<=', now()) 
+                ->where('end_date', '>=', now())   
+                ->first();
+    
+            if ($discount) {
+                $discountPercentage = $discount->discount_percentage ?? 0;
+                $discountFee = $discount->discount_fee ?? 0;
+            }
+        }
+    
+       
+        $fee = (int) $request->input('fee', 0);
+        $totalFee = $fee; 
+        $appliedDiscountFee = 0;
+    
+        // applay discount
+        if ($discountPercentage > 0) {
+      
+            $appliedDiscountFee = ($fee * $discountPercentage) / 100;
+           $totalFee = $fee - $appliedDiscountFee;
+           
+        } elseif ($discountFee > 0) {
+          
+            $appliedDiscountFee = $discountFee;
+            // $appliedDiscountFee =$appliedDiscountFee >$fee?$fee:$appliedDiscountFee;
+            $totalFee = $fee - $appliedDiscountFee;
+        }
+
+
+      
+        $data['total_fee'] = max(0, $totalFee); 
+        $data['discount_fee'] = $appliedDiscountFee;
+    
+        
+        error_log(json_encode( $data));
+        $response = $this->registrationClient->register($data);
+        RegistrationService::register($data, $response);
+    
+        return $response;
         
 
-        $response= $this->registrationClient->register(request()->all());
+        /* old code*/
+    /*     $response= $this->registrationClient->register(request()->all());
         
-       RegistrationService::register($request->all(),$response);
-        return $response;
+        RegistrationService::register($request->all(),$response);
+         return $response;*/
     }
 
 
