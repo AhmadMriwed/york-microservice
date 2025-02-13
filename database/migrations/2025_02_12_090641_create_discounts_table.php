@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('code',9)->unique();
-            $table->string('discount_percentage');
-            $table->string('discount_fee');
+            $table->double('discount_percentage');
+            $table->double('discount_fee');
             $table->date('start_date');
             $table->date('end_date');
 
