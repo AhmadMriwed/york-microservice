@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class ContactUsIconsType extends Model
 {
     use HasFactory;
+    protected $fillable=[
+      'type'
+    ];
 
     public function icons(){
         return $this->hasMany(ContactUsIcons::class,'type_id');
