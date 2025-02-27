@@ -26,6 +26,9 @@ class TrainingPlanController extends Controller
      *     description="Retrieve a list of all training plans",
      *     operationId="getAllTrainingPlans",
      *     tags={"Training Plans"},
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="List of training plans retrieved successfully",
@@ -45,6 +48,9 @@ class TrainingPlanController extends Controller
      *     description="Retrieve the most recent training plan for the current year, if available",
      *     operationId="getLatestTrainingPlan",
      *     tags={"Training Plans"},
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="Latest training plan retrieved successfully",
@@ -57,7 +63,7 @@ class TrainingPlanController extends Controller
      */
     public function getTrainingPlan()
     {
-        
+
 //        $latestTrainingPlan = TrainingPlan::where('year', date('Y'))->latest()->first();
 //        if($latestTrainingPlan)
 //            return TrainingPlanResource::make($latestTrainingPlan)->additional(['message' => 'Retrieved successfully']);

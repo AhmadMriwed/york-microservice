@@ -69,6 +69,9 @@ class RegistrationsController extends Controller
      *             @OA\Property(property="course_ad_id", type="integer", description="ID of the course advertisement")
      *         )
      *     ),
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=201,
      *         description="Registration created successfully",
@@ -98,11 +101,12 @@ class RegistrationsController extends Controller
 
     public function store(StoreRegistrationsRequest $request)
     {
-        
+
 
         $response= $this->registrationClient->register(request()->all());
-        
+
        RegistrationService::register($request->all(),$response);
+       $response['message']=__('messages.createdSuccess');
         return $response;
     }
 
@@ -129,6 +133,9 @@ class RegistrationsController extends Controller
      *             example=1
      *         )
      *     ),
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="Registration data retrieved successfully",
@@ -151,7 +158,7 @@ class RegistrationsController extends Controller
     public function show(Registration $registrations)
     {
         return RegistrationResource::make($registrations)
-            ->additional(['message' => 'Retrieved successfully']);
+            ->additional(['message' => __('messages.retrievedSuccess')]);
     }
 
 

@@ -18,6 +18,9 @@ class UpcomingCourseController extends Controller
      *     description="Retrieve a list of all upcoming courses",
      *     operationId="getUpcomingCourses",
      *     tags={"Upcoming Courses"},
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="List of upcoming courses retrieved successfully",
@@ -42,7 +45,7 @@ class UpcomingCourseController extends Controller
     public function index()
     {
         return UpcomingCourseResource::collection(UpcomingCourse::get())
-            ->additional(['message' => 'Retrieved successfully']);
+            ->additional(['message' => __('messages.retrievedSuccess')]);
 
     }
 
@@ -65,6 +68,9 @@ class UpcomingCourseController extends Controller
      *         required=true,
      *         description="ID of the upcoming course",
      *         @OA\Schema(type="integer")
+     *     ),
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
      *     ),
      *     @OA\Response(
      *         response=200,
@@ -97,7 +103,7 @@ class UpcomingCourseController extends Controller
     public function show(UpcomingCourse $upcomingCourse)
     {
         return UpcomingCourseResource::make($upcomingCourse)
-            ->additional(['message' => 'Retrieved successfully']);
+            ->additional(['message' => __('messages.retrievedSuccess')]);
 
     }
 

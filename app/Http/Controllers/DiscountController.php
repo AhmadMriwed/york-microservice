@@ -17,6 +17,9 @@ class DiscountController extends Controller
      *     description="Retrieve a list of all discounts",
      *     operationId="getDiscounts",
      *     tags={"Discounts"},
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="List of discounts retrieved successfully",
@@ -31,7 +34,7 @@ class DiscountController extends Controller
     public function index()
     {
         return DiscountResource::collection(Discount::get())
-            ->additional(['message' => 'Retrieved successfully']);
+            ->additional(['message' => __('messages.retrievedSuccess')]);
     }
 
 
@@ -48,6 +51,9 @@ class DiscountController extends Controller
      *         required=true,
      *         description="The unique code of the discount to search for",
      *         @OA\Schema(type="string", example="ABC123456")
+     *     ),
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
      *     ),
      *     @OA\Response(
      *         response=200,
@@ -71,25 +77,25 @@ class DiscountController extends Controller
 
         if (is_null($result) || empty($result)) {
             return response()->json([
-                'message' => 'No Results Found',
+                'message' =>  __('messages.notFound'),
             ], 404);
         }
         if($result->start_date > $currentDate)
         {
             return response()->json([
-                'message' => 'discount has not started yet',
+                'message' => __('messages.notStartedDiscount'),
             ], 422);
         }
         if($result->end_date < $currentDate)
         {
             return response()->json([
-                'message' => 'discount has expired',
+                'message' => __('messages.expiredDiscount'),
             ], 422);
         }
 
 
         return DiscountResource::make($result)
-            ->additional(['message' => 'Retrieved successfully']);
+            ->additional(['message' => __('messages.retrievedSuccess')]);
 
     }
 

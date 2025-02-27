@@ -23,6 +23,9 @@ class VenueController extends Controller
      *     description="Retrieve a list of all venues",
      *     operationId="getAllVenues",
      *     tags={"Venues"},
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="List of venues retrieved successfully",
@@ -47,6 +50,9 @@ class VenueController extends Controller
      *         description="ID of the venue",
      *         required=true,
      *         @OA\Schema(type="string")
+     *     ),
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
      *     ),
      *     @OA\Response(
      *         response=200,

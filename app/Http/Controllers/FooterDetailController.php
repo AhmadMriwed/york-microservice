@@ -16,6 +16,9 @@ class FooterDetailController extends Controller
      *     description="Retrieve all footer details",
      *     operationId="getFooterDetails",
      *     tags={"Footer"},
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="Successfully retrieved footer details",
@@ -25,7 +28,7 @@ class FooterDetailController extends Controller
     public function index()
     {
         return FooterDetailResource::collection(FooterDetail::get())
-            ->additional(['message' => 'Retrieved successfully']);
+            ->additional(['message' => __('messages.retrievedSuccess')]);
     }
 
 }

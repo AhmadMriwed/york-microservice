@@ -19,6 +19,9 @@ class CertificateController extends Controller
      *     description="Retrieve a list of all certificates",
      *     operationId="getCertificates",
      *     tags={"Certificates"},
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="List of certificates retrieved successfully",
@@ -34,7 +37,7 @@ class CertificateController extends Controller
     public function index()
     {
         return CertificateResource::collection(Certificate::get())
-            ->additional(['message' => 'Retrieved successfully']);
+            ->additional(['message' => __('messages.retrievedSuccess')]);
 
     }
 
@@ -59,6 +62,9 @@ class CertificateController extends Controller
  *         required=true,
  *         @OA\Schema(type="integer", example=1)
 *     ),
+ *       @OA\Parameter(
+ *         ref="#/components/parameters/Accept-Language"
+ *     ),
  *     @OA\Response(
  *         response=200,
  *         description="Certificate retrieved successfully",
@@ -81,7 +87,7 @@ class CertificateController extends Controller
     public function show(Certificate $certificate)
     {
         return CertificateResource::make($certificate)
-            ->additional(['message' => 'Retrieved successfully']);
+            ->additional(['message' => __('messages.retrievedSuccess')]);
 
     }
 
@@ -99,6 +105,9 @@ class CertificateController extends Controller
      *         required=true,
      *         description="The unique code of the certificate to search for",
      *         @OA\Schema(type="string", example="ABC123456")
+     *     ),
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
      *     ),
      *     @OA\Response(
      *         response=200,
@@ -130,12 +139,12 @@ class CertificateController extends Controller
 
         if (is_null($result) || empty($result)) {
             return response()->json([
-                'message' => 'No Results Found',
+                'message' => __('messages.notFound'),
             ], 404);
         }
 
         return CertificateResource::make($result)
-            ->additional(['message' => 'Retrieved successfully']);
+            ->additional(['message' => __('messages.retrievedSuccess')]);
 
     }
 

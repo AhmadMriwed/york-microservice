@@ -39,6 +39,9 @@ class CertificateReviewController extends Controller
      *             @OA\Property(property="message", type="string", description="Message content", example="Hello, I have a question about your services.")
      *         )
      *     ),
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="Message sent successfully",
@@ -78,7 +81,7 @@ class CertificateReviewController extends Controller
         $reviewDetail=$request->validated();
 
        $certificateReview=$this->certificateReviewService->sendMessage($reviewDetail);
-        return  CertificateReviewResource::make($certificateReview)->additional(['message' => 'stored successfully']);
+        return  CertificateReviewResource::make($certificateReview)->additional(['message' => __('messages.createdSuccess')]);
 
 
     }

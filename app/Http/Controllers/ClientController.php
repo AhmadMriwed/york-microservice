@@ -17,6 +17,9 @@ class ClientController extends Controller
      * @OA\Get(
      *     path="/clients",
      *     summary="Retrieve a list of clients",
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="List of clients retrieved successfully",
@@ -36,7 +39,7 @@ class ClientController extends Controller
     public function index()
     {
         return ClientResource::collection(Client::get())
-            ->additional(['message' => 'Retrieved successfully']);
+            ->additional(['message' => __('messages.retrievedSuccess')]);
 
     }
 
@@ -61,6 +64,9 @@ class ClientController extends Controller
      *             type="integer",
      *             example=1
      *         )
+     *     ),
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
      *     ),
      *     @OA\Response(
      *         response=200,
@@ -96,7 +102,7 @@ class ClientController extends Controller
     public function show(Client $client)
     {
         return ClientResource::make($client)
-            ->additional(['message' => 'Retrieved successfully']);
+            ->additional(['message' => __('messages.retrievedSuccess')]);
 
     }
 

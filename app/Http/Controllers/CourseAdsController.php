@@ -95,6 +95,9 @@ class CourseAdsController extends Controller
      *             @OA\Items(type="string"),
      *         )
      *     ),
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="Search results retrieved successfully",
@@ -124,6 +127,9 @@ class CourseAdsController extends Controller
      *     description="Retrieve a list of all course ads",
      *     operationId="getAllCourseAds",
      *     tags={"Course Ads"},
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="List of course ads retrieved successfully",
@@ -149,6 +155,9 @@ class CourseAdsController extends Controller
      *         required=true,
      *         @OA\Schema(type="string", example="1")
      *     ),
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="Course ad details retrieved successfully",
@@ -171,6 +180,9 @@ class CourseAdsController extends Controller
      *     description="Retrieve a map of filter course",
      *     operationId="getMapFilterCourse",
      *     tags={"Course Ads"},
+      *       @OA\Parameter(
+      *         ref="#/components/parameters/Accept-Language"
+      *     ),
      *     @OA\Response(
      *         response=200,
      *         description="Map of filter course retrieved successfully",

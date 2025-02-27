@@ -20,6 +20,9 @@ class ContactUsIconsController extends Controller
      *     description="Retrieve a list of all contact us icons",
      *     operationId="getContactUsIcons",
      *     tags={"Contact Us"},
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="List of contact us icons",
@@ -34,7 +37,7 @@ class ContactUsIconsController extends Controller
     {
         $icons = ContactUsIcons::with('type')->get();
         return ContactUsIconsResource::collection($icons)
-            ->additional(['message' => 'Icons retrieved successfully.']);
+            ->additional(['message' => __('messages.retrievedSuccess')]);
     }
 
     /**
@@ -57,6 +60,9 @@ class ContactUsIconsController extends Controller
      *             type="integer",
      *             example=1
      *         )
+     *     ),
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
      *     ),
      *     @OA\Response(
      *         response=200,
@@ -91,7 +97,7 @@ class ContactUsIconsController extends Controller
     public function show(ContactUsIcons $contactUsIcons)
     {
         return ContactUsIconsResource::make($contactUsIcons->load('type'))
-            ->additional(['message' => 'Icon retrieved successfully.']);
+            ->additional(['message' => __('messages.retrievedSuccess')]);
     }
 
 }

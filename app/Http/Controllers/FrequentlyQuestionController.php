@@ -19,6 +19,9 @@ class FrequentlyQuestionController extends Controller
      *     summary="Get all FAQs",
      *     description="Retrieve a list of frequently asked questions",
      *     tags={"Frequently Questions"},
+     *   @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="List of FAQs retrieved successfully",
@@ -32,7 +35,7 @@ class FrequentlyQuestionController extends Controller
     public function index()
     {
       return FrequentlyQuestionResource::collection(FrequentlyQuestion::get())
-          ->additional(['message' => 'Retrieved successfully']);
+          ->additional(['message' => __('messages.retrievedSuccess') ]);
     }
 
 
@@ -56,6 +59,9 @@ class FrequentlyQuestionController extends Controller
      *         required=true,
      *         @OA\Schema(type="integer")
      *     ),
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="FAQ retrieved successfully",
@@ -70,7 +76,7 @@ class FrequentlyQuestionController extends Controller
     public function show(FrequentlyQuestion $frequentlyQuestion)
     {
         return FrequentlyQuestionResource::make($frequentlyQuestion)
-            ->additional(['message' => 'Retrieved successfully']);
+            ->additional(['message' => __('messages.retrievedSuccess')]);
     }
 
 }
