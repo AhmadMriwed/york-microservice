@@ -6,11 +6,19 @@ namespace App\Http\Clients;
 class CategoryClient extends BaseClients{
     private $CATEGORY='category';
     public function getAllCategory()
-    {  
-        return $this->sendApiRequest("GET",$this->CATEGORY);
+    {
+        $language = request()->header('Accept-Language', 'en');
+
+        return $this->sendApiRequest("GET",$this->CATEGORY, [], [], [
+            'Accept-Language' => $language
+        ]);
     }
     public function getCategoryById(string $id)
     {
-        return $this->sendApiRequest("GET",$this->CATEGORY.'/'.$id);
+        $language = request()->header('Accept-Language', 'en'); 
+
+        return $this->sendApiRequest("GET", $this->CATEGORY . '/' . $id, [], [], [
+            'Accept-Language' => $language
+        ]);
     }
 }

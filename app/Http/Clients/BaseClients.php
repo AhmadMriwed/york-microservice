@@ -68,11 +68,11 @@ class BaseClients
 
     //     return new Collection($res);
     // }
-    public function sendApiRequest($method="GET", $url='',$body = [], $queryParameters = [])
+    public function sendApiRequest($method="GET", $url='',$body = [], $queryParameters = [],$customHeaders=[])
     {
         try {
-        
-    
+
+
             Log::info('HTTP method: ' . gettype($method) . ' - ' . var_export($method, true));
             if (!is_string($method)) {
                 throw new \InvalidArgumentException("HTTP method must be a string");
@@ -84,12 +84,14 @@ class BaseClients
             //$client = new Client();
             // إرسال الطلب
 
+            $headers = array_merge($this->header, $customHeaders);
+
             $response = $this->client->request($method,$url,
             [
                 'verify' => false, // تجاوز التحقق من الشهادة SSL
                 'query' => $queryParameters,
                 'json' => $body,
-                'headers' =>  $this->header,
+                'headers' =>  $headers,
             ]);
             // الحصول على الاستجابة
             $statusCode = $response->getStatusCode();
@@ -100,11 +102,11 @@ class BaseClients
             return json_decode($body, true);
 
         } catch (RequestException $e) {
-           
+
             // تعامل مع الأخطاء هنا
             $statusCode = $e->getResponse() ? $e->getResponse()->getStatusCode() : null;
             $errorBody = $e->getResponse() ? $e->getResponse()->getBody()->getContents() : $e->getMessage();
-        
+
             $jsonErrorBody=json_decode( $errorBody );
             // يمكنك التحقق من $statusCode و $errorBody واتخاذ الإجراء المناسب
             // على سبيل المثال، إرجاع الخطأ كمصفوفة

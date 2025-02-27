@@ -8,7 +8,11 @@ class RegistrationClient extends BaseClients
 
     public function register(array $data)
     {
-        return $this->sendApiRequest('POST', $this->Registration, $data);
+        $language = request()->header('Accept-Language', 'en');
+
+        return $this->sendApiRequest('POST', $this->Registration, $data,[], [
+            'Accept-Language' => $language
+        ]);
     }
 
 }

@@ -10,14 +10,26 @@ class TrainingPlanClient extends BaseClients
 
     public function getAllTrainingPlans()
     {
-        return $this->sendApiRequest('GET',$this->TrainingPlan);
+        $language = request()->header('Accept-Language', 'en');
+
+        return $this->sendApiRequest('GET',$this->TrainingPlan, [], [], [
+            'Accept-Language' => $language
+        ]);
     }
     public function getTrainingPlanById(string $id){
-        return $this->sendApiRequest('GET',$this->TrainingPlan.'/'.$id);
+        $language = request()->header('Accept-Language', 'en');
+
+        return $this->sendApiRequest('GET',$this->TrainingPlan.'/'.$id, [], [], [
+            'Accept-Language' => $language
+        ]);
     }
     public function getLastTrainingPlan(){
-      
-        return $this->sendApiRequest('GET',$this->TrainingPlan.'/get_last');
+        $language = request()->header('Accept-Language', 'en');
+
+
+        return $this->sendApiRequest('GET',$this->TrainingPlan.'/get_last', [], [], [
+            'Accept-Language' => $language
+        ]);
     }
 
 }

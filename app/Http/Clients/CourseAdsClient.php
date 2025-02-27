@@ -7,19 +7,35 @@ class CourseAdsClient extends BaseClients{
     private $COURSEADS='course_ads';
 
     public function SearchAdvanceCourseAds($body = [])
-    {  
-        return $this->sendApiRequest("GET",$this->COURSEADS.'/getAll',$body);
+    {
+        $language = request()->header('Accept-Language', 'en');
+
+        return $this->sendApiRequest("GET",$this->COURSEADS.'/getAll',$body, [],[
+            'Accept-Language' => $language
+        ]);
     }
     public function getAllCourseAds()
-    {  
-        return $this->sendApiRequest("GET",$this->COURSEADS);
+    {
+        $language = request()->header('Accept-Language', 'en');
+
+        return $this->sendApiRequest("GET",$this->COURSEADS, [], [], [
+            'Accept-Language' => $language
+        ]);
     }
     public function getCourseAdsById(string $id)
     {
-        return $this->sendApiRequest("GET",$this->COURSEADS.'/'.$id);
+        $language = request()->header('Accept-Language', 'en');
+
+        return $this->sendApiRequest("GET",$this->COURSEADS.'/'.$id, [], [], [
+            'Accept-Language' => $language
+        ]);
     }
     public function getMapFilterCourse()
-    {  
-        return $this->sendApiRequest("GET",$this->COURSEADS.'/getMap/filterCourse');
+    {
+        $language = request()->header('Accept-Language', 'en');
+
+        return $this->sendApiRequest("GET",$this->COURSEADS.'/getMap/filterCourse', [], [], [
+            'Accept-Language' => $language
+        ]);
     }
 }
