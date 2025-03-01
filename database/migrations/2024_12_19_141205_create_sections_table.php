@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
             $table->foreignId('type_id')->references('id')->on('section_types')->cascadeOnDelete();
-            $table->longText('title');
-            $table->longText('description');
+            $table->json('title');
+            $table->json('description');
             $table->mediumText('img')->nullable();
             $table->timestamps();
         });

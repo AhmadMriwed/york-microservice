@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('upcoming_courses', function (Blueprint $table) {
             $table->id();
             $table->date('course_date');
-            $table->text('title');
+            $table->json('title');
             $table->mediumText('img')->nullable();
-            $table->longText('description');
+            $table->json('description');
             $table->timestamps();
         });
     }

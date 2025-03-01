@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('sliders', function (Blueprint $table) {
             $table->id();
             $table->mediumText('img')->nullable();
-            $table->string('title',255);
-            $table->longText('description');
+            $table->json('title',255);
+            $table->json('description');
             $table->string('first_btn_text',255);
             $table->string('first_btn_url',4096);
             $table->string('second_btn_text',255);
