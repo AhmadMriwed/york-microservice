@@ -4,15 +4,19 @@ namespace App\Filament\Resources\SliderResource\Pages;
 
 use App\Filament\Resources\SliderResource;
 use Filament\Actions;
+use Filament\Actions\LocaleSwitcher;
 use Filament\Resources\Pages\ListRecords;
+use Filament\Resources\Pages\ListRecords\Concerns\Translatable;
 
 class ListSliders extends ListRecords
 {
+    use Translatable;
     protected static string $resource = SliderResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
+            LocaleSwitcher::make(),
             Actions\CreateAction::make(),
         ];
     }
