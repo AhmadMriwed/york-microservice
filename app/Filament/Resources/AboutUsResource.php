@@ -16,9 +16,11 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Resources\Concerns\Translatable;
 
 class AboutUsResource extends Resource
 {
+    use Translatable;
     protected static ?string $model = AboutUs::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-information-circle';
@@ -39,12 +41,14 @@ class AboutUsResource extends Resource
             ->schema([
                 TextInput::make('title')
                     ->label('Title')
-                    ->required(),
+                    ->required()
+                    ->translateLabel(),
 
                 RichEditor::make('description')
                     ->label('Description')
                     ->required()
-                    ->columnSpanFull(),
+                    ->columnSpanFull()
+                    ->translateLabel(),
 
                 TextInput::make('url')
                     ->label('URL')
@@ -57,26 +61,28 @@ class AboutUsResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return $table
-            ->columns([
-                TextColumn::make('title'),
-                TextColumn::make('description')->limit(50), // Shows a short preview
-                TextColumn::make('url')->limit(50),
-                TextColumn::make('created_at')->dateTime()->sortable(),
+        return $table->columns([
+            Tables\Columns\TextColumn::make('title')
+                ->label(__('Title'))
+                ->sortable()
+                ->searchable()
+                ->limit(30),
 
-            ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+            Tables\Columns\TextColumn::make('description')
+                ->label(__('Description'))
+                ->limit(50)
+                ->html(),
+
+            Tables\Columns\TextColumn::make('url')
+                ->label(__('Website URL'))
+                ->sortable()
+                ->searchable(),
+        ])->actions([
+            Tables\Actions\EditAction::make(),
+            Tables\Actions\DeleteAction::make(),
+        ]);
     }
+
 
     public static function getRelations(): array
     {

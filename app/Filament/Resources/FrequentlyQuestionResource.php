@@ -7,6 +7,7 @@ use App\Filament\Resources\FrequentlyQuestionResource\RelationManagers;
 use App\Models\FrequentlyQuestion;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -15,6 +16,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class FrequentlyQuestionResource extends Resource
 {
+    use Translatable;
+
     protected static ?string $model = FrequentlyQuestion::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
@@ -33,7 +36,13 @@ class FrequentlyQuestionResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\TextInput::make('question')
+                    ->label('Question')
+                    ->required(),
 
+                Forms\Components\TextInput::make('answer')
+                    ->label('Answer')
+                    ->required(),
             ]);
     }
 
@@ -41,7 +50,11 @@ class FrequentlyQuestionResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('question')
+                    ->label('Question'), // Show English by default
+
+                Tables\Columns\TextColumn::make('answer')
+                    ->label('Answer'),
             ])
             ->filters([
                 //

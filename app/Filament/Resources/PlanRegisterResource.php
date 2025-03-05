@@ -33,7 +33,24 @@ class PlanRegisterResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('training_plan_id')
+                    ->label('Training Plan ID')
+                    ->numeric()
+                    ->nullable(),
+
+                Forms\Components\TextInput::make('full_name')
+                    ->label('Full Name')
+                    ->required(),
+
+                Forms\Components\TextInput::make('phone')
+                    ->label('Phone')
+                    ->tel()
+                    ->required(),
+
+                Forms\Components\TextInput::make('email')
+                    ->label('Email')
+                    ->email()
+                    ->required(),
             ]);
     }
 
@@ -41,7 +58,27 @@ class PlanRegisterResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('training_plan_id')
+                    ->label('Training Plan ID')
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('full_name')
+                    ->label('Full Name')
+                    ->searchable()
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('phone')
+                    ->label('Phone')
+                    ->searchable(),
+
+                Tables\Columns\TextColumn::make('email')
+                    ->label('Email')
+                    ->searchable(),
+
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('Registered At')
+                    ->dateTime()
+                    ->sortable(),
             ])
             ->filters([
                 //

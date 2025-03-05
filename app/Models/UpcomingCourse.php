@@ -10,5 +10,12 @@ class UpcomingCourse extends Model
 {
     use HasFactory,HasTranslations;
 
+    protected $fillable=[
+        'title',
+        'description',
+        'img',
+        'course_date',
+    ];
+
     public $translatable = ['title','description'];
 }

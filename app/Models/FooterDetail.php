@@ -9,6 +9,8 @@ use Spatie\Translatable\HasTranslations;
 class FooterDetail extends Model
 {
     use HasFactory,HasTranslations;
+    protected $fillable = ['section', 'title', 'content', 'type'];
+
     public $translatable = ['content'];
 
 }
