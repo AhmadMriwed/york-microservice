@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('section', 50);
             $table->string('title', 255)->nullable();
-            $table->text('content')->nullable();
+            $table->json('content')->nullable();
             $table->string('type', 50)->nullable();
             $table->timestamps();
         });

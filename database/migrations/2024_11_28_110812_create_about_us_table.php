@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('about_us', function (Blueprint $table) {
             $table->id();
-            $table->longText('title');
-            $table->longText('description');
+            $table->json('title');
+            $table->json('description');
             $table->string('url',4096);
             $table->timestamps();
         });

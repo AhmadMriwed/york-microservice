@@ -18,6 +18,9 @@ class SliderController extends Controller
      *     description="Retrieve a list of all sliders",
      *     operationId="getAllSliders",
      *     tags={"Sliders"},
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="List of sliders retrieved successfully",
@@ -27,7 +30,7 @@ class SliderController extends Controller
     public function index()
     {
         return SliderResource::collection(Slider::get())
-            ->additional(['message' => 'Retrieved successfully']);
+            ->additional(['message' => __('messages.retrievedSuccess')]);
 
     }
 
@@ -52,6 +55,9 @@ class SliderController extends Controller
      *             example=1
      *         )
      *     ),
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="slider data retrieved successfully",
@@ -65,7 +71,7 @@ class SliderController extends Controller
     public function show(Slider $slider)
     {
         return SliderResource::make($slider)
-            ->additional(['message' => 'Retrieved successfully']);
+            ->additional(['message' => __('messages.retrievedSuccess')]);
     }
 
 }

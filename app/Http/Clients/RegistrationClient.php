@@ -8,7 +8,9 @@ class RegistrationClient extends BaseClients
 
     public function register(array $data)
     {
-        return $this->sendApiRequest('POST', $this->Registration, $data);
+       
+        return $this->sendApiRequest('POST', $this->Registration, $data,[], [
+        ]);
     }
 
 }

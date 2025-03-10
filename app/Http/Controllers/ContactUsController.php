@@ -22,6 +22,9 @@ class ContactUsController extends Controller
      *     description="Retrieve a list of all contact us ",
      *     operationId="getContactUs",
      *     tags={"Contact Us"},
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="List of contact us ",
@@ -35,7 +38,7 @@ class ContactUsController extends Controller
     public function index()
     {
         return ContactUsResource::collection(ContactUs::get())
-            ->additional(['message' => 'Retrieved successfully']);
+            ->additional(['message' => __('messages.retrievedSuccess')]);
     }
 
     /**
@@ -62,6 +65,9 @@ class ContactUsController extends Controller
      *             type="integer",
      *             example=1
      *         )
+     *     ),
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
      *     ),
      *     @OA\Response(
      *         response=200,
@@ -96,7 +102,7 @@ class ContactUsController extends Controller
     public function show(ContactUs $contactUs)
     {
         return ContactUsResource::make($contactUs)
-            ->additional(['message' => 'Retrieved successfully']);
+            ->additional(['message' => __('messages.retrievedSuccess')]);
     }
 
 
@@ -119,6 +125,9 @@ class ContactUsController extends Controller
      *             @OA\Property(property="email", type="string", format="email", description="Email address of the user", example="john.doe@example.com"),
      *             @OA\Property(property="message", type="string", description="Message content", example="Hello, I have a question about your services.")
      *         )
+     *     ),
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
      *     ),
      *     @OA\Response(
      *         response=200,
@@ -168,6 +177,11 @@ class ContactUsController extends Controller
 
         Mail::to($mailData['email'])->send(new ContactUsUserMail($mailData));
         Mail::to('099450735z@gmail.com')->send(new ContactUsMail($mailData));
+
+        $message=__('messages.doneSuccess');
+
+        return $message;
+
       }
 
 

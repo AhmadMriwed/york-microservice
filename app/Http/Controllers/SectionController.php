@@ -18,6 +18,9 @@ class SectionController extends Controller
      *     description="Retrieve a list of all sections",
      *     operationId="getAllSections",
      *     tags={"Sections"},
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="List of sections retrieved successfully",
@@ -27,7 +30,7 @@ class SectionController extends Controller
     public function index()
     {
         return SectionResource::collection(Section::get())
-            ->additional(['message' => 'Retrieved successfully']);
+            ->additional(['message' => __('messages.retrievedSuccess')]);
 
     }
 
@@ -52,6 +55,9 @@ class SectionController extends Controller
      *             example=1
      *         )
      *     ),
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="Section data retrieved successfully",
@@ -65,7 +71,7 @@ class SectionController extends Controller
     public function show(Section $section)
     {
         return SectionResource::make($section)
-            ->additional(['message' => 'Retrieved successfully']);
+            ->additional(['message' => __('messages.retrievedSuccess')]);
 
     }
 

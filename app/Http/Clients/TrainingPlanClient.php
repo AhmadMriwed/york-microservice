@@ -10,14 +10,19 @@ class TrainingPlanClient extends BaseClients
 
     public function getAllTrainingPlans()
     {
-        return $this->sendApiRequest('GET',$this->TrainingPlan);
+       
+        return $this->sendApiRequest('GET',$this->TrainingPlan, [], [], [
+        ]);
     }
     public function getTrainingPlanById(string $id){
-        return $this->sendApiRequest('GET',$this->TrainingPlan.'/'.$id);
+       
+        return $this->sendApiRequest('GET',$this->TrainingPlan.'/'.$id, [], [], [
+        ]);
     }
     public function getLastTrainingPlan(){
       
-        return $this->sendApiRequest('GET',$this->TrainingPlan.'/get_last');
+        return $this->sendApiRequest('GET',$this->TrainingPlan.'/get_last', [], [], [
+        ]);
     }
 
 }

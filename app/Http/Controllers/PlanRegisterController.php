@@ -27,6 +27,9 @@ class PlanRegisterController extends Controller
      *     description="Get a list of all plan registers",
      *     operationId="getAllPlanRegisters",
      *     tags={"Plan Registers"},
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="List of plan registers retrieved successfully",
@@ -48,7 +51,7 @@ class PlanRegisterController extends Controller
     public function index()
     {
         return PlanRegisterResource::collection(planRegister::get())
-        ->additional(['message' => 'Retrieved successfully']);
+        ->additional(['message' => __('messages.retrievedSuccess')]);
     }
 
 
@@ -94,6 +97,9 @@ class PlanRegisterController extends Controller
      *             )
      *         )
      *     ),
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="Registration plan stored successfully",
@@ -118,7 +124,7 @@ class PlanRegisterController extends Controller
 
         Cookie::queue(Cookie::make('reg', 'yes', 3600));
 
-      return  PlanRegisterResource::make($planRegister)->additional(['message' => 'stored successfully']);
+      return  PlanRegisterResource::make($planRegister)->additional(['message' => __('messages.createdSuccess')]);
 
     }
 
@@ -142,6 +148,9 @@ class PlanRegisterController extends Controller
      *             type="integer",
      *             example=1
      *         )
+     *     ),
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
      *     ),
      *     @OA\Response(
      *         response=200,
@@ -176,7 +185,7 @@ class PlanRegisterController extends Controller
     public function show(planRegister $planRegister)
     {
         return PlanRegisterResource::make($planRegister)
-            ->additional(['message' => 'Retrieved successfully']);
+            ->additional(['message' => __('messages.retrievedSuccess')]);
 
     }
 

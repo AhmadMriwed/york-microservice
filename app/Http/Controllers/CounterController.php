@@ -18,6 +18,9 @@ class CounterController extends Controller
      *     description="Retrieve a list of all counters",
      *     operationId="getCounters",
      *     tags={"Counters"},
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="List of counters retrieved successfully",
@@ -27,7 +30,7 @@ class CounterController extends Controller
     public function index()
     {
         return CounterResource::collection(Counter::get())
-            ->additional(['message' => 'Retrieved successfully']);
+            ->additional(['message' => __('messages.retrievedSuccess')]);
 
     }
 
@@ -50,6 +53,9 @@ class CounterController extends Controller
      *         required=true,
      *         @OA\Schema(type="integer", example=1)
      *     ),
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="Counter retrieved successfully",
@@ -63,7 +69,7 @@ class CounterController extends Controller
     public function show(Counter $counter)
     {
         return CounterResource::make($counter)
-            ->additional(['message' => 'Retrieved successfully']);
+            ->additional(['message' => __('messages.retrievedSuccess')]);
 
     }
 

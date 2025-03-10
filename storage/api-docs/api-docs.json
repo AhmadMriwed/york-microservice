@@ -1,16 +1,13 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "York academy",
-        "description": "York academy",
+        "title": "York Academy",
+        "description": "York Academy",
         "version": "1.0.0"
     },
     "servers": [
         {
             "url": "http://127.0.0.1:8000/api/"
-        },
-        {
-            "url": "https://sleepy-tereshkova.212-227-199-24.plesk.page/api/"
         },
         {
             "url": "/api/"
@@ -21,6 +18,11 @@
             "get": {
                 "summary": "Get About Us information",
                 "operationId": "7daf8730990ac31b8a33eade585dcb96",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "About Us data retrieved successfully",
@@ -46,6 +48,11 @@
                 "summary": "Get all categories",
                 "description": "Retrieve a list of all categories",
                 "operationId": "getAllCategories",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "List of categories retrieved successfully"
@@ -74,6 +81,9 @@
                             "type": "string",
                             "example": "1"
                         }
+                    },
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
                     }
                 ],
                 "responses": {
@@ -94,6 +104,11 @@
                 "summary": "Get all certificates",
                 "description": "Retrieve a list of all certificates",
                 "operationId": "getCertificates",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "List of certificates retrieved successfully",
@@ -138,6 +153,9 @@
                             "type": "integer",
                             "example": 1
                         }
+                    },
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
                     }
                 ],
                 "responses": {
@@ -197,6 +215,9 @@
                             "type": "string",
                             "example": "ABC123456"
                         }
+                    },
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
                     }
                 ],
                 "responses": {
@@ -230,6 +251,11 @@
                 "summary": "Send a request for certificate review",
                 "description": "Send a request for certificate review to the admin.",
                 "operationId": "store",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -341,6 +367,11 @@
             "get": {
                 "summary": "Retrieve a list of clients",
                 "operationId": "af1f3794367a5e843bf15e3a9033d911",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "List of clients retrieved successfully",
@@ -385,6 +416,9 @@
                             "type": "integer",
                             "example": 1
                         }
+                    },
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
                     }
                 ],
                 "responses": {
@@ -434,6 +468,11 @@
                 "summary": "Get all contact us",
                 "description": "Retrieve a list of all contact us ",
                 "operationId": "getContactUs",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "List of contact us ",
@@ -469,6 +508,9 @@
                             "type": "integer",
                             "example": 1
                         }
+                    },
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
                     }
                 ],
                 "responses": {
@@ -518,6 +560,11 @@
                 "summary": "Send a contact message",
                 "description": "Send a contact message to the admin and user.",
                 "operationId": "sendMessage",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -633,6 +680,11 @@
                 "summary": "Get all contact us icons",
                 "description": "Retrieve a list of all contact us icons",
                 "operationId": "getContactUsIcons",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "List of contact us icons",
@@ -668,6 +720,9 @@
                             "type": "integer",
                             "example": 1
                         }
+                    },
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
                     }
                 ],
                 "responses": {
@@ -717,6 +772,11 @@
                 "summary": "Get all counters",
                 "description": "Retrieve a list of all counters",
                 "operationId": "getCounters",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "List of counters retrieved successfully"
@@ -742,6 +802,9 @@
                             "type": "integer",
                             "example": 1
                         }
+                    },
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
                     }
                 ],
                 "responses": {
@@ -851,6 +914,9 @@
                                 "type": "string"
                             }
                         }
+                    },
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
                     }
                 ],
                 "responses": {
@@ -884,6 +950,11 @@
                 "summary": "Get all course ads",
                 "description": "Retrieve a list of all course ads",
                 "operationId": "getAllCourseAds",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "List of course ads retrieved successfully"
@@ -909,6 +980,9 @@
                             "type": "string",
                             "example": "1"
                         }
+                    },
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
                     }
                 ],
                 "responses": {
@@ -929,6 +1003,11 @@
                 "summary": "Get map  filter course",
                 "description": "Retrieve a map of filter course",
                 "operationId": "getMapFilterCourse",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Map of filter course retrieved successfully"
@@ -944,6 +1023,11 @@
                 "summary": "Get all discounts",
                 "description": "Retrieve a list of all discounts",
                 "operationId": "getDiscounts",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "List of discounts retrieved successfully",
@@ -982,6 +1066,9 @@
                             "type": "string",
                             "example": "ABC123456"
                         }
+                    },
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
                     }
                 ],
                 "responses": {
@@ -1012,6 +1099,11 @@
                 "summary": "Get footer details",
                 "description": "Retrieve all footer details",
                 "operationId": "getFooterDetails",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successfully retrieved footer details"
@@ -1027,6 +1119,11 @@
                 "summary": "Get all FAQs",
                 "description": "Retrieve a list of frequently asked questions",
                 "operationId": "72d277eff5d51f3bdf754eecfb5374eb",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "List of FAQs retrieved successfully",
@@ -1061,6 +1158,9 @@
                         "schema": {
                             "type": "integer"
                         }
+                    },
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
                     }
                 ],
                 "responses": {
@@ -1088,6 +1188,11 @@
                 "summary": "Retrieve all plan registers",
                 "description": "Get a list of all plan registers",
                 "operationId": "getAllPlanRegisters",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "List of plan registers retrieved successfully",
@@ -1127,6 +1232,11 @@
                 "summary": "Store a new registration plan",
                 "description": " new registration plan with provided details",
                 "operationId": "storePlanRegister",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1184,6 +1294,9 @@
                             "type": "integer",
                             "example": 1
                         }
+                    },
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
                     }
                 ],
                 "responses": {
@@ -1233,6 +1346,11 @@
                 "summary": "Create a new registration",
                 "description": "Store a new registration for a course",
                 "operationId": "createRegistration",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1450,6 +1568,9 @@
                             "type": "integer",
                             "example": 1
                         }
+                    },
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
                     }
                 ],
                 "responses": {
@@ -1499,6 +1620,11 @@
                 "summary": "Get all sections",
                 "description": "Retrieve a list of all sections",
                 "operationId": "getAllSections",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "List of sections retrieved successfully"
@@ -1524,6 +1650,9 @@
                             "type": "integer",
                             "example": 1
                         }
+                    },
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
                     }
                 ],
                 "responses": {
@@ -1544,6 +1673,11 @@
                 "summary": "Get all sliders",
                 "description": "Retrieve a list of all sliders",
                 "operationId": "getAllSliders",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "List of sliders retrieved successfully"
@@ -1569,6 +1703,9 @@
                             "type": "integer",
                             "example": 1
                         }
+                    },
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
                     }
                 ],
                 "responses": {
@@ -1589,6 +1726,11 @@
                 "summary": "Get all training plans",
                 "description": "Retrieve a list of all training plans",
                 "operationId": "getAllTrainingPlans",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "List of training plans retrieved successfully"
@@ -1604,6 +1746,11 @@
                 "summary": "Get the latest training plan for the current year",
                 "description": "Retrieve the most recent training plan for the current year, if available",
                 "operationId": "getLatestTrainingPlan",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Latest training plan retrieved successfully"
@@ -1622,6 +1769,11 @@
                 "summary": "Get all upcoming courses",
                 "description": "Retrieve a list of all upcoming courses",
                 "operationId": "getUpcomingCourses",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "List of upcoming courses retrieved successfully",
@@ -1681,6 +1833,9 @@
                         "schema": {
                             "type": "integer"
                         }
+                    },
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
                     }
                 ],
                 "responses": {
@@ -1746,6 +1901,11 @@
                 "summary": "Get all venues",
                 "description": "Retrieve a list of all venues",
                 "operationId": "getAllVenues",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "List of venues retrieved successfully"
@@ -1770,6 +1930,9 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
                     }
                 ],
                 "responses": {
@@ -2150,6 +2313,22 @@
             },
             "400": {
                 "description": "Invalid request data"
+            }
+        },
+        "parameters": {
+            "Accept-Language": {
+                "name": "Accept-Language",
+                "in": "header",
+                "description": "اختر اللغة",
+                "required": false,
+                "schema": {
+                    "type": "string",
+                    "default": "en",
+                    "enum": [
+                        "en",
+                        "ar"
+                    ]
+                }
             }
         }
     },

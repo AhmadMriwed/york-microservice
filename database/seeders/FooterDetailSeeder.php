@@ -20,7 +20,7 @@ class FooterDetailSeeder extends Seeder
             [
                 'section' => 'contact',
                 'title' => 'EMAIL',
-                'content' => 'info@yorkbritishacademy.uk',
+                'content' => json_encode(['en' => 'info@yorkbritishacademy.uk', 'ar' => 'info@yorkbritishacademy.uk']),
                 'type' => 'email',
                 'created_at' => $now,
                 'updated_at' => $now,
@@ -28,7 +28,7 @@ class FooterDetailSeeder extends Seeder
             [
                 'section' => 'contact',
                 'title' => 'OFFICE',
-                'content' => '27 Old Gloucester Street, WC1N 3AX, London, United Kingdom',
+                'content' => json_encode(['en' => '27 Old Gloucester Street, WC1N 3AX, London, United Kingdom', 'ar' => '27 شارع غلوستر القديم، لندن، المملكة المتحدة']),
                 'type' => 'address',
                 'created_at' => $now,
                 'updated_at' => $now,
@@ -36,7 +36,7 @@ class FooterDetailSeeder extends Seeder
             [
                 'section' => 'contact',
                 'title' => 'PHONE',
-                'content' => '+442087209292 / +447520619292',
+                'content' => json_encode(['en' => '+442087209292 / +447520619292', 'ar' => '+442087209292 / +447520619292']),
                 'type' => 'phone',
                 'created_at' => $now,
                 'updated_at' => $now,
@@ -44,7 +44,7 @@ class FooterDetailSeeder extends Seeder
             [
                 'section' => 'contact',
                 'title' => 'Canada - Ontario',
-                'content' => '+13438000033',
+                'content' => json_encode(['en' =>'+13438000033','ar' =>'+13438000033']),
                 'type' => 'phone',
                 'created_at' => $now,
                 'updated_at' => $now,
@@ -52,7 +52,7 @@ class FooterDetailSeeder extends Seeder
             [
                 'section' => 'contact',
                 'title' => 'Netherlands - Amsterdam',
-                'content' => '+3197005033557',
+                'content' => json_encode(['en' =>'+3197005033557','ar' =>'+3197005033557' ]),
                 'type' => 'phone',
                 'created_at' => $now,
                 'updated_at' => $now,
@@ -60,7 +60,7 @@ class FooterDetailSeeder extends Seeder
             [
                 'section' => 'about',
                 'title' => null,
-                'content' => 'The York British Academy is currently pursuing an ambitious vision...',
+                'content' => json_encode(['en' => 'The York British Academy is currently pursuing an ambitious vision...', 'ar' => 'أكاديمية يورك البريطانية تتابع حاليًا رؤية طموحة...']),
                 'type' => 'text',
                 'created_at' => $now,
                 'updated_at' => $now,
@@ -68,7 +68,7 @@ class FooterDetailSeeder extends Seeder
             [
                 'section' => 'image',
                 'title' => null,
-                'content' => 'https://facebook.com',
+                'content' => json_encode(['en' => 'https://facebook.com', 'ar' => 'https://facebook.com']),
                 'type' => 'link',
                 'created_at' => $now,
                 'updated_at' => $now,
@@ -76,7 +76,7 @@ class FooterDetailSeeder extends Seeder
             [
                 'section' => 'copy_right',
                 'title' => null,
-                'content' => 'copyright 2025.All Rights Reserved by York British Academy',
+                'content' => json_encode(['en' => 'copyright 2025. All Rights Reserved by York British Academy', 'ar' => 'حقوق النشر 2025. جميع الحقوق محفوظة لأكاديمية يورك البريطانية']),
                 'type' => 'copy_right',
                 'created_at' => $now,
                 'updated_at' => $now,

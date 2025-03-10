@@ -9,6 +9,10 @@ class ContactUsType extends Model
 {
     use HasFactory;
 
+    protected $fillable=[
+      'type'
+    ];
+
     public function contact(){
         return $this->hasMany(ContactUs::class,'type_id');
     }

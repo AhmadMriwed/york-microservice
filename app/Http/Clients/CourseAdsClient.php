@@ -7,19 +7,27 @@ class CourseAdsClient extends BaseClients{
     private $COURSEADS='course_ads';
 
     public function SearchAdvanceCourseAds($body = [])
-    {  
-        return $this->sendApiRequest("GET",$this->COURSEADS.'/getAll',$body);
+    {
+       
+        return $this->sendApiRequest("GET",$this->COURSEADS.'/getAll',$body, [],[
+        ]);
     }
     public function getAllCourseAds()
-    {  
-        return $this->sendApiRequest("GET",$this->COURSEADS);
+    {
+       
+        return $this->sendApiRequest("GET",$this->COURSEADS, [], [], [
+        ]);
     }
     public function getCourseAdsById(string $id)
     {
-        return $this->sendApiRequest("GET",$this->COURSEADS.'/'.$id);
+        
+        return $this->sendApiRequest("GET",$this->COURSEADS.'/'.$id, [], [], [
+        ]);
     }
     public function getMapFilterCourse()
-    {  
-        return $this->sendApiRequest("GET",$this->COURSEADS.'/getMap/filterCourse');
+    {
+        
+        return $this->sendApiRequest("GET",$this->COURSEADS.'/getMap/filterCourse', [], [], [
+        ]);
     }
 }

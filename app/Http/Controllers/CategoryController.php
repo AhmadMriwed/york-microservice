@@ -29,6 +29,9 @@ class CategoryController extends Controller
      *     description="Retrieve a list of all categories",
      *     operationId="getAllCategories",
      *     tags={"Categories"},
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="List of categories retrieved successfully",
@@ -42,6 +45,7 @@ class CategoryController extends Controller
 
     public function getAllCategory()
     {
+        
         return $this->categoryClient->getAllCategory();
     }
 
@@ -58,6 +62,9 @@ class CategoryController extends Controller
      *         description="ID of the category",
      *         required=true,
      *         @OA\Schema(type="string", example="1")
+     *     ),
+     *       @OA\Parameter(
+     *         ref="#/components/parameters/Accept-Language"
      *     ),
      *     @OA\Response(
      *         response=200,

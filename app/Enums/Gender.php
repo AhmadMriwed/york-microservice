@@ -6,8 +6,8 @@ use App\Traits\Enumable;
 enum Gender: string
 {
     use Enumable;
-    case MALE = 'Male';
-    case FEMALE = 'Female';
+    case Male = 'Male';
+    case Female = 'Female';
     public static function toArray(): array
     {
         return array_map(function ($status) {
