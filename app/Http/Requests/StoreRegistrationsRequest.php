@@ -22,6 +22,7 @@ class StoreRegistrationsRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'discount_code'=>['nullable','exists:discounts,code']
 //            'course_id' => ['required'],
 //            'full_name' => ['required', 'string'],
 //            'phone' => ['required', 'string'],

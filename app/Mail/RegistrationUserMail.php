@@ -30,7 +30,7 @@ class RegistrationUserMail extends Mailable
     {
         return new Envelope(
             subject: 'Successfully registered in York British Academy',
-            from: new Address('Training@yorkbritishacademy.uk', 'York British Academy')
+            from: new Address('Training@yorkacademy.uk', 'York British Academy')
         );
     }
 

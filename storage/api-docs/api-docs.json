@@ -1491,6 +1491,9 @@
                                     "course_ad_id": {
                                         "description": "ID of the course advertisement",
                                         "type": "integer"
+                                    },
+                                    "discount_code": {
+                                        "description": "Code of the discont"
                                     }
                                 },
                                 "type": "object"
