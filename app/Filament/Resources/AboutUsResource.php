@@ -42,6 +42,7 @@ class AboutUsResource extends Resource
                 TextInput::make('title')
                     ->label('Title')
                     ->required()
+                    ->maxLength(255)
                     ->translateLabel(),
 
                 RichEditor::make('description')

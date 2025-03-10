@@ -6,6 +6,7 @@ use App\Filament\Resources\CertificateReviewResource\Pages;
 use App\Filament\Resources\CertificateReviewResource\RelationManagers;
 use App\Models\CertificateReview;
 use Filament\Forms;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Concerns\Translatable;
@@ -59,7 +60,7 @@ class CertificateReviewResource extends Resource
                     ->required()
                     ->maxLength(255),
 
-                TextInput::make('message')
+                Textarea::make('message')
                     ->label('Message')
                     ->required()
                     ->maxLength(255),

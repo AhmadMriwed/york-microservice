@@ -41,6 +41,7 @@ class CounterResource extends Resource
 
                 TextInput::make('title')
                     ->label('Title')
+                    ->maxLength(255)
                     ->required(),
 
             ]);
@@ -51,7 +52,8 @@ class CounterResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('counter')->label('Counter'),
-                TextColumn::make('title')->label('Title'),
+                TextColumn::make('title')->label('Title')
+                ->limit(30),
 
 
             ])

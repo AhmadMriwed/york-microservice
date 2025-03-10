@@ -40,16 +40,19 @@ class PlanRegisterResource extends Resource
 
                 Forms\Components\TextInput::make('full_name')
                     ->label('Full Name')
+                    ->maxLength(255)
                     ->required(),
 
                 Forms\Components\TextInput::make('phone')
                     ->label('Phone')
+                    ->maxLength(15)
                     ->tel()
                     ->required(),
 
                 Forms\Components\TextInput::make('email')
                     ->label('Email')
                     ->email()
+                    ->maxLength(255)
                     ->required(),
             ]);
     }

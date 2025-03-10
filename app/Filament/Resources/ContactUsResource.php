@@ -39,7 +39,7 @@ class ContactUsResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('type_id')->label('Type Id')
+                Select::make('type_id')->label(' Contact Type Id')
                     ->relationship('type','type')
                     ->required(),
 
@@ -54,9 +54,10 @@ class ContactUsResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('type_id')->label('Type Id'),
+                TextColumn::make('type_id')->label(' Contact Type Id'),
                 TextColumn::make('content')->label('Content')
-                    ->limit(50),
+                    ->limit(50)
+                    ->sortable(),
             ])
             ->filters([
                 //

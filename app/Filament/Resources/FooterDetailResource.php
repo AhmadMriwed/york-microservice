@@ -7,6 +7,7 @@ use App\Filament\Resources\FooterDetailResource\RelationManagers;
 use App\Models\FooterDetail;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Concerns\Translatable;
@@ -52,7 +53,7 @@ class FooterDetailResource extends Resource
                     ->maxLength(255)
                     ->nullable(),
 
-                TextInput::make('content')
+                Textarea::make('content')
                     ->label('Content')
                     ->required(),
 

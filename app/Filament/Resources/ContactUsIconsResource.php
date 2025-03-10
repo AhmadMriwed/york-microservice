@@ -37,7 +37,7 @@ class ContactUsIconsResource extends Resource
         return $form
             ->schema([
 
-                select::make('type_id')->label('Type Id')
+                select::make('type_id')->label('Icon Type Id')
                     ->relationship('type', 'type')
                 ->required(),
 
@@ -55,7 +55,7 @@ class ContactUsIconsResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('ContactUsIconsType.type')
-                    ->label(__('Type'))
+                    ->label(__('Icon Type'))
                     ->sortable()
                     ->searchable(),
 

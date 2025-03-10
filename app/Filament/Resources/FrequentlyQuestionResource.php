@@ -36,11 +36,11 @@ class FrequentlyQuestionResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('question')
+                Forms\Components\Textarea::make('question')
                     ->label('Question')
                     ->required(),
 
-                Forms\Components\TextInput::make('answer')
+                Forms\Components\Textarea::make('answer')
                     ->label('Answer')
                     ->required(),
             ]);
@@ -51,10 +51,12 @@ class FrequentlyQuestionResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('question')
-                    ->label('Question'), // Show English by default
+                    ->label('Question')
+                    ->limit(50),
 
                 Tables\Columns\TextColumn::make('answer')
-                    ->label('Answer'),
+                    ->label('Answer')
+                    ->limit(50),
             ])
             ->filters([
                 //

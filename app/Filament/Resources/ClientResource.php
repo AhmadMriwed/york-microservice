@@ -42,6 +42,7 @@ class ClientResource extends Resource
                     ->image()
                     ->disk('public')
                     ->directory('clients/images')
+                    ->maxSize(2048)
                     ->columnSpanFull(),
 
                 TextInput::make('url')

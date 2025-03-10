@@ -45,6 +45,7 @@ class DiscountResource extends Resource
                 TextInput::make('name')
                     ->label('Name')
                     ->required()
+                    ->maxLength(255)
                     ->columnSpanFull(),
 
                 TextInput::make('discount_percentage')
@@ -56,6 +57,7 @@ class DiscountResource extends Resource
                     ->label('Discount Fee')
                     ->required()
                     ->columnSpanFull(),
+
                 DatePicker::make('start_date')
                     ->label('Start Date')
                     ->required(),
@@ -77,6 +79,7 @@ class DiscountResource extends Resource
                     ->searchable(),
 
                 TextColumn::make('name')->label('Name')
+                    ->limit(30)
                     ->sortable()
                     ->searchable(),
 

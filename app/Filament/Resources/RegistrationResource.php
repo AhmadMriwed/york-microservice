@@ -40,16 +40,19 @@ class RegistrationResource extends Resource
             ->schema([
                 TextInput::make('full_name')
                     ->label('Full Name')
+                    ->maxLength(255)
                     ->required(),
 
                 TextInput::make('phone')
                     ->label('Phone')
                     ->tel()
+                    ->maxLength(15)
                     ->required(),
 
                 TextInput::make('email')
                     ->label('Email')
                     ->email()
+                    ->maxLength(255)
                     ->required(),
 
                 Select::make('gender')
@@ -65,7 +68,7 @@ class RegistrationResource extends Resource
                     ->nullable(),
 
                 TextInput::make('course_id')
-                    ->label('Course')
+                    ->label('Course Id')
                     ->required(),
             ]);
     }
@@ -89,6 +92,16 @@ class RegistrationResource extends Resource
 
                 TextColumn::make('email')
                     ->label('Email')
+                    ->searchable(),
+
+                TextColumn::make('address')
+                    ->label('Address')
+                    ->limit(50)
+                    ->searchable(),
+
+                TextColumn::make('notes')
+                    ->label('Notes')
+                    ->limit(30)
                     ->searchable(),
 
                 TextColumn::make('gender')

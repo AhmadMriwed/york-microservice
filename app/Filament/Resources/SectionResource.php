@@ -75,6 +75,7 @@ class SectionResource extends Resource
 
                 TextColumn::make('title')
                     ->label(__('Title'))
+                    ->limit(30)
                     ->sortable()
                     ->searchable(),
 

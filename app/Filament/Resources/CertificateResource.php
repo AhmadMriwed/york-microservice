@@ -49,6 +49,7 @@ class CertificateResource extends Resource
                     TextInput::make('trainer_full_name')
                         ->label('Trainer Name')
                         ->required()
+                        ->maxLength(255)
                         ->columnSpanFull(),
 
                     FileUpload::make('trainer_img')
@@ -56,6 +57,7 @@ class CertificateResource extends Resource
                         ->image()
                         ->disk('public')
                         ->directory('trainers')
+                        ->maxSize(2048)
                         ->columnSpanFull(),
 
                     FileUpload::make('certificate_img')
@@ -63,6 +65,7 @@ class CertificateResource extends Resource
                         ->image()
                         ->disk('public')
                         ->directory('certificates')
+                        ->maxSize(2048)
                         ->columnSpanFull(),
 
                     DatePicker::make('valid_from')
