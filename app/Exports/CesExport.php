@@ -34,8 +34,6 @@ class CesExport implements FromCollection, WithHeadings, WithMapping, WithEvents
 
     public function map($certificate): array
     {
-        $certificateId = is_numeric($certificate->certificate_id) ? intval($certificate->certificate_id) : $certificate->certificate_id;
-
         return [
             $certificate->certificate_id,
             '', // Certificate Image (Handled in drawings)
@@ -81,7 +79,9 @@ class CesExport implements FromCollection, WithHeadings, WithMapping, WithEvents
     public function drawings()
     {
         $drawings = [];
-        $certificates = Certificate::whereBetween('id', [$this->from, $this->to])->get();
+        $certificates = Certificate::whereBetween('id', [$this->from, $this->to])
+            ->orderByDesc('id')
+            ->get();
 
         foreach ($certificates as $index => $certificate) {
             $row = $index + 2; // ابدأ من الصف الثاني

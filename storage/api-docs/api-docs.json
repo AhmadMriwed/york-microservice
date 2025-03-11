@@ -1346,11 +1346,6 @@
                 "summary": "Create a new registration",
                 "description": "Store a new registration for a course",
                 "operationId": "createRegistration",
-                "parameters": [
-                    {
-                        "$ref": "#/components/parameters/Accept-Language"
-                    }
-                ],
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1493,7 +1488,8 @@
                                         "type": "integer"
                                     },
                                     "discount_code": {
-                                        "description": "Code of the discont"
+                                        "description": "Code of the discont",
+                                        "type": "string"
                                     }
                                 },
                                 "type": "object"
@@ -1571,9 +1567,6 @@
                             "type": "integer",
                             "example": 1
                         }
-                    },
-                    {
-                        "$ref": "#/components/parameters/Accept-Language"
                     }
                 ],
                 "responses": {
