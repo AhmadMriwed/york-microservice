@@ -14,6 +14,6 @@ class Slider extends Model
         'img', 'title', 'description', 'first_btn_text', 'first_btn_url', 'second_btn_text', 'second_btn_url'
     ];
 
-    public $translatable = ['title','description'];
+    public $translatable = ['title','description','first_btn_text','second_btn_text'];
 
 }

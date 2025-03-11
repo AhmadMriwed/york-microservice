@@ -16,9 +16,9 @@ return new class extends Migration
             $table->mediumText('img')->nullable();
             $table->json('title');
             $table->json('description');
-            $table->string('first_btn_text',255);
+            $table->json('first_btn_text');
             $table->string('first_btn_url',4096);
-            $table->string('second_btn_text',255);
+            $table->json('second_btn_text');
             $table->string('second_btn_url',4096);
             $table->timestamps();
         });
