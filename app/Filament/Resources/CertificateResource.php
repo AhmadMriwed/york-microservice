@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Exports\CesExport;
 use App\Filament\Resources\CertificateResource\Pages;
 use App\Filament\Resources\CertificateResource\RelationManagers;
 use App\Models\Certificate;
@@ -13,11 +14,13 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CertificateResource extends Resource
 {
@@ -99,13 +102,27 @@ class CertificateResource extends Resource
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->headerActions([
+                Action::make('export')
+                    ->label('Export')
+                    ->icon('heroicon-o-arrow-down-tray') // Download Icon
+                    ->color('primary')
+                    ->requiresConfirmation()
+                    ->form([
+                        TextInput::make('from')
+                            ->label('From ID')
+                            ->numeric()
+                            ->required(),
+                        TextInput::make('to')
+                            ->label('To ID')
+                            ->numeric()
+                            ->required(),
+                    ])
+                    ->action(function (array $data) {
+                        return Excel::download(new CesExport($data['from'], $data['to']), 'certificates.xlsx');
+                    }),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
             ]);
     }
 
