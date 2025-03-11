@@ -6,6 +6,7 @@ use App\Filament\Resources\FooterDetailResource\Pages;
 use App\Filament\Resources\FooterDetailResource\RelationManagers;
 use App\Models\FooterDetail;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -17,6 +18,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class FooterDetailResource extends Resource
 {
@@ -38,6 +40,7 @@ class FooterDetailResource extends Resource
 
     public static function form(Forms\Form $form): Forms\Form
     {
+
         return $form
             ->schema([
                 Select::make('section')
@@ -47,27 +50,29 @@ class FooterDetailResource extends Resource
                         'image' => 'Image',
                         'copy_right' => 'Copyright',
                     ])
+                    ->reactive() // Makes the form update dynamically based on selection
                     ->required(),
 
                 TextInput::make('title')
                     ->maxLength(255)
                     ->nullable(),
 
-                Textarea::make('content')
+                Forms\Components\RichEditor::make('content')
                     ->label('Content')
+                    ->hidden(fn ($get) => $get('section') === 'image') // Hide content when "image" is selected
                     ->required(),
 
-                Select::make('type')
-                    ->options([
-                        'email' => 'Email',
-                        'phone' => 'Phone',
-                        'address' => 'Address',
-                        'link' => 'Link',
-                        'copy_right' => 'Copyright',
-                    ])
-                    ->required(),
+                FileUpload::make('image')
+                    ->image()
+                    ->disk('public')
+                    ->directory('footer/images')
+                    ->hidden(fn ($get) => $get('section') !== 'image') // Show only if "image" is selected
+                    ->required(fn ($get) => $get('section') === 'image') // Require only if "image" is selected
+                    ->maxSize(2048),
             ]);
+
     }
+
 
     public static function table(Table $table): Table
     {
@@ -75,7 +80,16 @@ class FooterDetailResource extends Resource
             ->columns([
                 TextColumn::make('section')->sortable()->searchable(),
                 TextColumn::make('title')->sortable()->searchable(),
-                TextColumn::make('content')->label('Content'),
+
+                TextColumn::make('content')
+                    ->label('Content')
+                    ->formatStateUsing(function ($state) {
+                        if ($state && Str::startsWith($state, 'footer/images/')) {
+                            return '<img src="' . asset('storage/' . $state) . '" alt="Image" width="50">';
+                        }
+                        return $state;
+                    })
+                    ->html(),
                 TextColumn::make('type')->sortable()->searchable(),
                 TextColumn::make('created_at')->dateTime()->sortable(),
             ])
