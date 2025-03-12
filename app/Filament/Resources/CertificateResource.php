@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Exports\CesExport;
 use App\Filament\Resources\CertificateResource\Pages;
 use App\Filament\Resources\CertificateResource\RelationManagers;
+use App\Imports\CertificatesImport;
 use App\Models\Certificate;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
@@ -91,11 +92,13 @@ class CertificateResource extends Resource
                     ->disk('public')
                     ->width(50)
                     ->height(50),
+
                 TextColumn::make('trainer_full_name')->label('Trainer Name')->sortable()->searchable(),
                 ImageColumn::make('trainer_img')->label('Trainer Image')
                     ->disk('public')
                     ->width(50)
                     ->height(50),
+
                 TextColumn::make('valid_from')->label('Valid From')->sortable(),
                 TextColumn::make('valid_to')->label('Valid To')->sortable(),
             ])
@@ -105,7 +108,7 @@ class CertificateResource extends Resource
             ->headerActions([
                 Action::make('export')
                     ->label('Export')
-                    ->icon('heroicon-o-arrow-down-tray') // Download Icon
+                    ->icon('heroicon-o-arrow-up-tray') // Download Icon
                     ->color('primary')
                     ->requiresConfirmation()
                     ->form([
@@ -121,7 +124,30 @@ class CertificateResource extends Resource
                     ->action(function (array $data) {
                         return Excel::download(new CesExport($data['from'], $data['to']), 'certificates.xlsx');
                     }),
+
+                Action::make('import')
+                    ->label('Import')
+                    ->icon('heroicon-o-arrow-down-tray')
+                    ->color('success')
+                    ->form([
+                        FileUpload::make('file')
+                            ->label('Excel File')
+                            ->disk('local') // Ensure the disk is correct
+                            ->directory('imports')
+                            ->acceptedFileTypes([
+                                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                                'application/vnd.ms-excel'
+                            ])
+                            ->required(),
+                    ])
+                    ->action(function (array $data) {
+                        $filePath = storage_path('app/' . $data['file']); // Get full path
+
+                        Excel::import(new CertificatesImport($filePath), $filePath);
+                    })
+                    ->requiresConfirmation(),
             ])
+
             ->bulkActions([
             ]);
     }
