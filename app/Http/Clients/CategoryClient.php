@@ -20,4 +20,11 @@ class CategoryClient extends BaseClients{
         return $this->sendApiRequest("GET", $this->CATEGORY . '/' . $id, [], [], [
         ]);
     }
+
+    public function createCategory(array $data)
+    {
+       
+        return $this->sendApiRequest('POST', $this->CATEGORY, $data,[], [
+        ]);
+    }
 }

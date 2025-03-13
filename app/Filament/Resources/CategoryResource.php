@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CategoryResource\Pages;
 use App\Filament\Resources\CategoryResource\RelationManagers;
+use App\Http\Clients\CategoryClient;
 use App\Models\Category;
 use CactusGalaxy\FilamentAstrotomic\Resources\Concerns\ResourceTranslatable;
 use Filament\Forms;
@@ -21,6 +22,8 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Storage;
+use Filament\Tables\Actions\Action;
+
 
 class CategoryResource extends Resource
 {
@@ -47,23 +50,23 @@ class CategoryResource extends Resource
                     ]),
                 ]),
 
-                Tabs::make('images')->tabs([
-                    Tab::make('images')->schema([
-                    FileUpload::make('img')  
-                    ->label(__('Image'))
-                        ->image()
-                        ->disk('public')
-                        ->directory('categories/images')
-                        ->maxSize(2048)
-            ,
-                    FileUpload::make('imgicon')  
-                    ->label(__('image_icon'))
-                        ->image()
-                        ->disk('public')
-                        ->directory('categories/icons')
-                        ->maxSize(1024),
-                    ])
-                ]),
+            //     Tabs::make('images')->tabs([
+            //         Tab::make('images')->schema([
+            //         FileUpload::make('img')  
+            //         ->label(__('Image'))
+            //             ->image()
+            //             ->disk('public')
+            //             ->directory('categories/images')
+            //             ->maxSize(2048)
+            // ,
+            //         FileUpload::make('imgicon')  
+            //         ->label(__('image_icon'))
+            //             ->image()
+            //             ->disk('public')
+            //             ->directory('categories/icons')
+            //             ->maxSize(1024),
+            //         ])
+            //     ]),
                
             ]);
     }
@@ -75,7 +78,7 @@ class CategoryResource extends Resource
                 TextColumn::make('title')
                     ->label('Title')
                     ->sortable()
-                    ->searchable(),
+                ,
                     ImageColumn::make('img') 
                     ->label(__('Image'))
                     ->disk('public') 
@@ -88,7 +91,58 @@ class CategoryResource extends Resource
                     ->disk('public')
                     ->width(30)
                     ->height(30),
-            ]);
+            ])
+            // ->actions([
+                // Action::make('createViaApi')
+                //     ->label('Create via API')
+                //     ->action(function ($record) {
+
+                //         $categoryClient = new CategoryClient();
+                //         $response= $categoryClient->createCategory([
+                //             'title' => $record->title,
+                //             'sub_title' => $record->sub_title,
+                //             'image' => $record->image,
+                //         ]);
+                //         error_log(json_encode($response["message"]??""));
+
+                        // if($response["error"]) {
+                        //      // إظهار رسالة خطأ
+                        //      Notification::make()
+                        //      ->title('فشل الإنشاء عبر API')
+                        //      ->danger()
+                        //      ->send();
+                          
+                        // } else {
+                        //      // إظهار رسالة نجاح
+                        //      Notification::make()
+                        //      ->title('تم الإنشاء بنجاح عبر API')
+                        //      ->success()
+                        //      ->send();
+                        // }
+                        
+                        // // استدعاء API endpoint لإنشاء سجل
+                        // $response = Http::post('https://your-api.com/api/training-plans', [
+                        //     'title' => $record->title,
+                        //     'sub_title' => $record->sub_title,
+                        //     // إرسال بيانات أخرى
+                        // ]);
+
+                        // if ($response->successful()) {
+                        //     // إظهار رسالة نجاح
+                        //     Notification::make()
+                        //         ->title('تم الإنشاء بنجاح عبر API')
+                        //         ->success()
+                        //         ->send();
+                        // } else {
+                        //     // إظهار رسالة خطأ
+                        //     Notification::make()
+                        //         ->title('فشل الإنشاء عبر API')
+                        //         ->danger()
+                        //         ->send();
+                        // }
+                    // }),
+            // ])
+            ;
     }
 
     public static function getPages(): array
