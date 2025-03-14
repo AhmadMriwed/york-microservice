@@ -50,12 +50,12 @@ class DiscountResource extends Resource
 
                 TextInput::make('discount_percentage')
                     ->label('Discount Percentage')
-                    ->required()
+                    // ->required()
                     ->columnSpanFull(),
 
                 TextInput::make('discount_fee')
                     ->label('Discount Fee')
-                    ->required()
+                    // ->required()
                     ->columnSpanFull(),
 
                 DatePicker::make('start_date')

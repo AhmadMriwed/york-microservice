@@ -145,6 +145,7 @@ Route::group(['prefix' => '/certificates-review'], function () {
 Route::group(['prefix' => '/discounts'], function () {
     Route::get('/',[DiscountController::class,'index']);
     Route::get('/search',[DiscountController::class,'discount_search']);
+    Route::get('/apply',[DiscountController::class,'applyDiscount']);
 });
 
 Route::group(['prefix' => '/footer-details'], function () {

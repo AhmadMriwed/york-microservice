@@ -1091,6 +1091,107 @@
                 }
             }
         },
+        "/discounts/apply": {
+            "get": {
+                "tags": [
+                    "Discounts"
+                ],
+                "summary": "Apply a discount",
+                "description": "Apply a discount to a given fee using a discount code and return the calculated total fee, discount fee, and original fee.",
+                "operationId": "applyDiscount",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "description": "The unique discount code to be applied",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "ABC123456"
+                        }
+                    },
+                    {
+                        "name": "fee",
+                        "in": "query",
+                        "description": "The original fee before applying the discount",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 100
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/Accept-Language"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Discount applied successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Retrieved successfully"
+                                        },
+                                        "fee": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "example": 100
+                                        },
+                                        "discount_fee": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "example": 10
+                                        },
+                                        "total_fee": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "example": 90
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Discount code not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Discount code not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Invalid or expired discount",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "This discount has expired or is not valid yet"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/footer-details": {
             "get": {
                 "tags": [
