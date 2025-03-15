@@ -12,7 +12,7 @@ class CertificatesImport implements ToModel, WithHeadingRow
     {
         return new Certificate([
             'certificate_id' => $row['certificate_code'],
-            'certificate_img' => $row['certificate_image'], // You may need to handle file uploads separately
+            'certificate_img' => $row['certificate_image'],
             'trainer_full_name' => $row['trainer_full_name'],
             'trainer_img' => $row['trainer_image'],
             'valid_from' => $row['valid_from'],

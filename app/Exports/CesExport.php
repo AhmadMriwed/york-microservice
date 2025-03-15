@@ -28,7 +28,7 @@ class CesExport implements FromCollection, WithHeadings, WithMapping, WithEvents
     public function collection()
     {
         return Certificate::whereBetween('id', [$this->from, $this->to])
-            ->orderByDesc('id')
+          //  ->orderByDesc('id')
             ->get();
     }
 
@@ -36,9 +36,9 @@ class CesExport implements FromCollection, WithHeadings, WithMapping, WithEvents
     {
         return [
             $certificate->certificate_id,
-            $certificate->certificate_img ? asset('storage/' . $certificate->certificate_img) : '', // Store Image URL
+            $certificate->certificate_img, //? asset('storage/' . $certificate->certificate_img) : '', // Store Image URL
             $certificate->trainer_full_name,
-            $certificate->trainer_img ? asset('storage/' . $certificate->trainer_img) : '', // Store Image URL
+            $certificate->trainer_img ,//? asset('storage/' . $certificate->trainer_img) : '', // Store Image URL
             $certificate->valid_from,
             $certificate->valid_to,
         ];
