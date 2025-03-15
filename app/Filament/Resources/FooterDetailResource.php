@@ -85,7 +85,7 @@ class FooterDetailResource extends Resource
                     ->label('Content')
                     ->formatStateUsing(function ($state) {
                         if ($state && Str::startsWith($state, 'footer/images/')) {
-                            return '<img src="' . asset('storage/' . $state) . '" alt="Image" width="50">';
+                            return '<img src="' . asset('storage/' . $state) . '" alt="Image" width="60" >';
                         }
                         return $state;
                     })

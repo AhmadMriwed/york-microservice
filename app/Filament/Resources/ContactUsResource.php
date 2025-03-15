@@ -54,7 +54,7 @@ class ContactUsResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('type_id')->label(' Contact Type Id'),
+                TextColumn::make('type.type')->label(' Contact Type'),
                 TextColumn::make('content')->label('Content')
                     ->limit(50)
                     ->sortable(),
